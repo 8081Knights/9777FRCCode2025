@@ -24,6 +24,7 @@ public class SwerveDrive {
         public static double hypotenuse;
         public static double genericTickRotation = Math.PI / 24;
         public static double[] newSetAngles = new double[4];
+        public static double[][] afterPosUnitCircle = new double[4][2];
         public static double[][] afterRotationPosition = new double[4][2];
 
 
@@ -45,9 +46,14 @@ public class SwerveDrive {
         ControllerVariables.newSetAngles[2] = ControllerVariables.defaultAngles[2] + ControllerVariables.newSetAngle;
         ControllerVariables.newSetAngles[3] = ControllerVariables.defaultAngles[3] + ControllerVariables.newSetAngle;
 
-        
-
-
+        ControllerVariables.afterPosUnitCircle[0][0] = Math.cos(ControllerVariables.newSetAngles[0]);
+        ControllerVariables.afterPosUnitCircle[0][1] = Math.sin(ControllerVariables.newSetAngles[0]);
+        ControllerVariables.afterPosUnitCircle[1][0] = Math.cos(ControllerVariables.newSetAngles[1]);
+        ControllerVariables.afterPosUnitCircle[1][1] = Math.sin(ControllerVariables.newSetAngles[1]);
+        ControllerVariables.afterPosUnitCircle[2][0] = Math.cos(ControllerVariables.newSetAngles[2]);
+        ControllerVariables.afterPosUnitCircle[2][1] = Math.sin(ControllerVariables.newSetAngles[2]);
+        ControllerVariables.afterPosUnitCircle[3][0] = Math.cos(ControllerVariables.newSetAngles[3]);
+        ControllerVariables.afterPosUnitCircle[3][1] = Math.sin(ControllerVariables.newSetAngles[3]);
 
         
     }
