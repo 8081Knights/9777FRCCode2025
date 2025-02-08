@@ -8,36 +8,36 @@ public class HardwareMappings {
 
     // TODO: Change CAN IDs
     
-    TalonFX driveMotorFR = new TalonFX(0);
-    TalonFX driveMotorFL = new TalonFX(0);
-    TalonFX driveMotorBR = new TalonFX(0);
-    TalonFX driveMotorBL = new TalonFX(0);
+    public static TalonFX driveMotorFR = new TalonFX(0);
+    public static TalonFX driveMotorFL = new TalonFX(0);
+    public static TalonFX driveMotorBR = new TalonFX(0);
+    public static TalonFX driveMotorBL = new TalonFX(0);
 
-    TalonFX turnMotorFR = new TalonFX(0);
-    TalonFX turnMotorFL = new TalonFX(0);
-    TalonFX turnMotorBR = new TalonFX(0);
-    TalonFX turnMotorBL = new TalonFX(0);
+    public static TalonFX turnMotorFR = new TalonFX(0);
+    public static TalonFX turnMotorFL = new TalonFX(0);
+    public static TalonFX turnMotorBR = new TalonFX(0);
+    public static TalonFX turnMotorBL = new TalonFX(0);
 
 
-    CANcoder turnEncoderFR = new CANcoder(0);
-    CANcoder turnEncoderFL = new CANcoder(0);
-    CANcoder turnEncoderBR = new CANcoder(0);
-    CANcoder turnEncoderBL = new CANcoder(0);
+    public static CANcoder turnEncoderFR = new CANcoder(0);
+    public static CANcoder turnEncoderFL = new CANcoder(0);
+    public static CANcoder turnEncoderBR = new CANcoder(0);
+    public static CANcoder turnEncoderBL = new CANcoder(0);
     
-    double[] initialEncoderPositions = {
+    static double[] initialEncoderPositions = {
         0,
         0,
         0,
         0,
     };
 
-    SwerveModule frontRight = new SwerveModule(driveMotorFR, turnMotorFR, turnEncoderFR, 
+    public static SwerveModule frontRight = new SwerveModule(driveMotorFR, turnMotorFR, turnEncoderFR, 
     initialEncoderPositions[0]);
-    SwerveModule frontLeft  = new SwerveModule(driveMotorFL, turnMotorFL, turnEncoderFL, 
+    public static SwerveModule frontLeft  = new SwerveModule(driveMotorFL, turnMotorFL, turnEncoderFL, 
     initialEncoderPositions[1]);
-    SwerveModule backRight  = new SwerveModule(driveMotorBR, turnMotorBR, turnEncoderBR, 
+    public static SwerveModule backRight  = new SwerveModule(driveMotorBR, turnMotorBR, turnEncoderBR, 
     initialEncoderPositions[2]);
-    SwerveModule backLeft   = new SwerveModule(driveMotorBL, turnMotorBL, turnEncoderBL, 
+    public static SwerveModule backLeft   = new SwerveModule(driveMotorBL, turnMotorBL, turnEncoderBL, 
     initialEncoderPositions[3]);
     
 }
