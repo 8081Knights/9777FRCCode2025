@@ -1,5 +1,8 @@
 package frc.robot.teleopswerve;
+import java.util.Arrays;
+
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.HardwareMappings;
 
 
@@ -9,7 +12,7 @@ public class SwerveDrive {
 
     /** 
      * Variables for the robot that controll everything
-     * @
+     * 
      */
     public class ControllerVariables {
     
@@ -26,6 +29,7 @@ public class SwerveDrive {
         public static double[][] afterPosUnitCircle = new double[4][2];
         public static double[][] afterRotationPosition = new double[4][2];
         public static double[][] finalPosition = new double[4][2];
+        public static double maxHypotenuse;
 
         public static boolean updateMovement;
         public static boolean updateRotation;
@@ -67,11 +71,13 @@ public class SwerveDrive {
          ControllerVariables.updateRotation = true;
         }
 
+        // Add angle to the stuff to make the robot rotate
         ControllerVariables.newSetAngles[0] = ControllerVariables.defaultAngles[0] + ControllerVariables.newSetAngle;
         ControllerVariables.newSetAngles[1] = ControllerVariables.defaultAngles[1] + ControllerVariables.newSetAngle;
         ControllerVariables.newSetAngles[2] = ControllerVariables.defaultAngles[2] + ControllerVariables.newSetAngle;
         ControllerVariables.newSetAngles[3] = ControllerVariables.defaultAngles[3] + ControllerVariables.newSetAngle;
 
+        // pop off unit circle
         ControllerVariables.afterRotationPosition[0][0] = Math.cos(ControllerVariables.newSetAngles[0]) * ControllerVariables.hypotenuse;
         ControllerVariables.afterRotationPosition[0][1] = Math.sin(ControllerVariables.newSetAngles[0]) * ControllerVariables.hypotenuse;
         ControllerVariables.afterRotationPosition[1][0] = Math.cos(ControllerVariables.newSetAngles[1]) * ControllerVariables.hypotenuse;
@@ -82,6 +88,7 @@ public class SwerveDrive {
         ControllerVariables.afterRotationPosition[3][1] = Math.sin(ControllerVariables.newSetAngles[3]) * ControllerVariables.hypotenuse;
 
 
+        // add new cener positions to it all
         ControllerVariables.finalPosition[0][0] = ControllerVariables.afterRotationPosition[0][0] + ControllerVariables.newCenetreposition[0];
         ControllerVariables.finalPosition[0][1] = ControllerVariables.afterRotationPosition[0][1] + ControllerVariables.newCenetreposition[1];
         ControllerVariables.finalPosition[1][0] = ControllerVariables.afterRotationPosition[1][0] + ControllerVariables.newCenetreposition[0];
@@ -93,15 +100,18 @@ public class SwerveDrive {
 
 
 
+        // if nothing happens, then go back to normal
         if (!ControllerVariables.updateMovement && !ControllerVariables.updateRotation) {
             return;
         }
+        // list of hypenenuses for the speeds
         double[] hypotenuseeee = new double[4];
         for (int i = 0; i < 4; i++) {
             hypotenuseeee[i] = (ControllerVariables.finalPosition[i][0] * ControllerVariables.finalPosition[i][0]) + 
                 (ControllerVariables.finalPosition[i][1] * ControllerVariables.finalPosition[i][1]);
 
 
+                hypotenuseeee[i] = Math.sqrt(hypotenuseeee[i]);
             if (ControllerVariables.finalPosition[i][1] < 0) {
                 ControllerVariables.moduleError[i][1] = Math.acos(-ControllerVariables.finalPosition[i][1] / hypotenuseeee[i]) + Math.PI;
             } else {
@@ -109,15 +119,33 @@ public class SwerveDrive {
             }
         }
 
+        
+        
+        // configurating speeds
+        Arrays.sort(hypotenuseeee);
+        
+        ControllerVariables.maxHypotenuse = Math.max(hypotenuseeee[4], 3);
+        
+        for (int i = 0; i < 4; i++) {
 
+            ControllerVariables.moduleError[i][0] = 
+                ((ControllerVariables.finalPosition[i][0] * ControllerVariables.finalPosition[i][0]) + 
+                 (ControllerVariables.finalPosition[i][1] * ControllerVariables.finalPosition[i][1]))
+                / ControllerVariables.maxHypotenuse;
 
+            ControllerVariables.moduleError[i][0] = Math.sqrt(ControllerVariables.moduleError[i][0]);
+        }
+
+        SmartDashboard.putNumber("frontRight", HardwareMappings.frontRight.goToNewPosition( ControllerVariables.moduleError[0] ));
+        SmartDashboard.putNumber("frontLeft ", HardwareMappings.frontLeft.goToNewPosition(  ControllerVariables.moduleError[1] ));
+        SmartDashboard.putNumber("backRight ", HardwareMappings.backRight.goToNewPosition(  ControllerVariables.moduleError[2] ));
+        SmartDashboard.putNumber("backLeft  ", HardwareMappings.backLeft.goToNewPosition(   ControllerVariables.moduleError[3] ));
         
     }
 
     public static void init(double[] dimetions, double inputDefaultAngles[]) {
         for (int i = 0; i < inputDefaultAngles.length; i++) {
             ControllerVariables.defaultSwerveConfiguration[i] = inputDefaultAngles[i];
-
         }
         ControllerVariables.robotDimentions = dimetions;
         ControllerVariables.hypotenuse = Math.sqrt((dimetions[0] * dimetions[0]) + (dimetions[1] * dimetions[1]));

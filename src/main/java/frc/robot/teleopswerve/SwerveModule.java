@@ -70,6 +70,10 @@ public class SwerveModule {
         return errorReturn;
     }
 
+    public double goToNewPosition( double[] arrayVariant ) {
+        return goToNewPosition(arrayVariant[0], arrayVariant[1]);
+    }
+
     double NormalizeAngle(double angle) {
         while (angle > 2*Math.PI) {
             angle -= 2*Math.PI;
