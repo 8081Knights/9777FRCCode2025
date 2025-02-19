@@ -18,7 +18,9 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-public static XboxController controller = new XboxController(0);
+  public static XboxController controller = new XboxController(0);
+  public static XboxController controller2 = new XboxController(1);
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -92,7 +94,24 @@ public static XboxController controller = new XboxController(0);
 
   /** This function is called periodically during test mode. */
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    HardwareMappings.turnMotorFR.set(controller.getLeftY());
+    HardwareMappings.turnMotorFL.set(controller.getRightY());
+    HardwareMappings.turnMotorBR.set(controller2.getLeftY());
+    HardwareMappings.turnMotorBL.set(controller2.getRightY());
+
+    SmartDashboard.putNumber("FR", HardwareMappings.turnEncoderFR.getAbsolutePosition().getValueAsDouble());
+    SmartDashboard.putNumber("FL", HardwareMappings.turnEncoderFL.getAbsolutePosition().getValueAsDouble());
+    SmartDashboard.putNumber("BR", HardwareMappings.turnEncoderBR.getAbsolutePosition().getValueAsDouble());
+    SmartDashboard.putNumber("BL", HardwareMappings.turnEncoderBL.getAbsolutePosition().getValueAsDouble());
+
+
+
+    SmartDashboard.putNumber("FRController", Math.signum(controller.getLeftY()));
+    SmartDashboard.putNumber("FLController", Math.signum(controller.getRightY()));
+    SmartDashboard.putNumber("BRController", Math.signum(controller2.getLeftY()));
+    SmartDashboard.putNumber("BLController", Math.signum(controller2.getRightY()));
+  }
 
   /** This function is called once when the robot is first started up. */
   @Override

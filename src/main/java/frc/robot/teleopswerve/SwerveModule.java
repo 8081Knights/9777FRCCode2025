@@ -63,7 +63,8 @@ public class SwerveModule {
             currentAngleErr += (-Math.signum(optimalAngleTwoPi) * Math.PI);
         }
 
-        driveMotor.set(setSpeed * direction);
+        // negative power make encoder go positively
+        driveMotor.set( - setSpeed * direction);
         turnMotor.set(currentAngleErr);
 
         errorReturn = (Math.abs(currentAngle - setAngle) + Math.abs(currentAngleErr));
@@ -78,7 +79,7 @@ public class SwerveModule {
         while (angle > 2*Math.PI) {
             angle -= 2*Math.PI;
         }
-        while (angle < 0) {
+        while (angle <= 0) {
             angle += 2*Math.PI;
         }
         return angle;

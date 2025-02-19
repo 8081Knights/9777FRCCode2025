@@ -8,21 +8,21 @@ public class HardwareMappings {
 
     // TODO: Change CAN IDs
     
-    public static TalonFX driveMotorFR = new TalonFX(0);
-    public static TalonFX driveMotorFL = new TalonFX(0);
-    public static TalonFX driveMotorBR = new TalonFX(0);
-    public static TalonFX driveMotorBL = new TalonFX(0);
+    public static TalonFX driveMotorFR = new TalonFX(13);
+    public static TalonFX driveMotorFL = new TalonFX(17);
+    public static TalonFX driveMotorBR = new TalonFX(12);
+    public static TalonFX driveMotorBL = new TalonFX(16);
 
-    public static TalonFX turnMotorFR = new TalonFX(0);
-    public static TalonFX turnMotorFL = new TalonFX(0);
-    public static TalonFX turnMotorBR = new TalonFX(0);
-    public static TalonFX turnMotorBL = new TalonFX(0);
+    public static TalonFX turnMotorFR = new TalonFX(15);
+    public static TalonFX turnMotorFL = new TalonFX(10);
+    public static TalonFX turnMotorBR = new TalonFX(14);
+    public static TalonFX turnMotorBL = new TalonFX(11);
 
 
-    public static CANcoder turnEncoderFR = new CANcoder(0);
-    public static CANcoder turnEncoderFL = new CANcoder(0);
-    public static CANcoder turnEncoderBR = new CANcoder(0);
-    public static CANcoder turnEncoderBL = new CANcoder(0);
+    public static CANcoder turnEncoderFR = new CANcoder(26);
+    public static CANcoder turnEncoderFL = new CANcoder(24);
+    public static CANcoder turnEncoderBR = new CANcoder(20);
+    public static CANcoder turnEncoderBL = new CANcoder(22);
     
     static double[] initialEncoderPositions = {
         0,
