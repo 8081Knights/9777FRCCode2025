@@ -21,7 +21,6 @@ public class Robot extends TimedRobot {
   public static PS4Controller  controller = new PS4Controller (0);
   public static PS4Controller  controller2 = new PS4Controller (1);
   private double rotationA = Math.PI/2;
-  private
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -102,13 +101,13 @@ public class Robot extends TimedRobot {
       rotationA =  Math.PI/4;
     }
     if (controller.povUpLeft(null).getAsBoolean()){
-      rotationA = 3*Math.PI/4;
+      rotationA = (3*Math.PI/4) - 0.3;
     }
     if (controller.povDownLeft(null).getAsBoolean()){
-      rotationA = 5*Math.PI/4;
+      rotationA = (5*Math.PI/4) + 0.05;
     }
     if (controller.povDownRight(null).getAsBoolean()){
-      rotationA = 7*Math.PI/4;
+      rotationA = (7*Math.PI/4) + 0.08;
     }
 
     HardwareMappings.turnMotorFR.set(controller.getLeftY());
