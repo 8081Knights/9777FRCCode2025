@@ -7,7 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.PS4Controller ;
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
  * the TimedRobot documentation. If you change the name of this class or the package after creating
@@ -18,8 +18,10 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
-  public static XboxController controller = new XboxController(0);
-  public static XboxController controller2 = new XboxController(1);
+  public static PS4Controller  controller = new PS4Controller (0);
+  public static PS4Controller  controller2 = new PS4Controller (1);
+  private double rotationA = Math.PI/2;
+  private
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -95,6 +97,20 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {
+
+    if (controller.povUpRight(null).getAsBoolean()){
+      rotationA =  Math.PI/4;
+    }
+    if (controller.povUpLeft(null).getAsBoolean()){
+      rotationA = 3*Math.PI/4;
+    }
+    if (controller.povDownLeft(null).getAsBoolean()){
+      rotationA = 5*Math.PI/4;
+    }
+    if (controller.povDownRight(null).getAsBoolean()){
+      rotationA = 7*Math.PI/4;
+    }
+
     HardwareMappings.turnMotorFR.set(controller.getLeftY());
     HardwareMappings.turnMotorFL.set(controller.getRightY());
     HardwareMappings.turnMotorBR.set(controller2.getLeftY());
