@@ -59,14 +59,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
-
-    // Elevator basic control
-    if (controller1.getR2Axis() > .05) {
-      HardwareMappings.QuickMethods.setElevatorPower(controller1.getR2Axis());
-    }
-    if (controller1.getL2Axis() > .05) {
-      HardwareMappings.QuickMethods.setElevatorPower(controller1.getL2Axis());
-    }
   }
 
   @Override
@@ -80,7 +72,17 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    
+
+    // Elevator basic control
+    if (controller1.getR2Axis() > .05) {
+      HardwareMappings.QuickMethods.setElevatorPower(controller1.getR2Axis());
+    }
+    if (controller1.getL2Axis() > .05) {
+      HardwareMappings.QuickMethods.setElevatorPower(controller1.getL2Axis());
+    }
+  }
 
   @Override
   public void testExit() {}

@@ -8,7 +8,8 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 
 public class HardwareMappings {
 
-    
+    // TODO: reset the pigion can to something other than 0 and regenerate the swerve code if needed
+    // 23 works 
 
 
     // NON- drive motors and sensors
