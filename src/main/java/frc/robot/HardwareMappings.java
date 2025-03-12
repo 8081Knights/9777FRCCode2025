@@ -2,8 +2,11 @@ package frc.robot;
 
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class HardwareMappings {
@@ -16,6 +19,10 @@ public class HardwareMappings {
     public static SparkMax Ele1 = new SparkMax(7, MotorType.kBrushless);
     public static SparkMax Ele2 = new SparkMax(6, MotorType.kBrushless);
 
+    public static SparkFlex joint = new SparkFlex(21, MotorType.kBrushless);
+    public static SparkFlex intakeOuttake = new SparkFlex(0, MotorType.kBrushless);
+
+
 
 
 
@@ -27,8 +34,9 @@ public class HardwareMappings {
          * @param setSpeed (takes -1 to 1, no safety catch yet)
          */
         public static void setElevatorPower(double setSpeed) {
-            Ele1.set(setSpeed);
-            Ele2.set(setSpeed);
+            Ele1.set(-setSpeed);
+            // Ele2.set(setSpeed);
+            SmartDashboard.putNumber("eleSpeed", setSpeed);
         }
     }
 }
