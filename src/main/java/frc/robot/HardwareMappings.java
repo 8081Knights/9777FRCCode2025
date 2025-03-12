@@ -34,8 +34,8 @@ public class HardwareMappings {
          * @param setSpeed (takes -1 to 1, no safety catch yet)
          */
         public static void setElevatorPower(double setSpeed) {
-            Ele1.set(-setSpeed);
-            // Ele2.set(setSpeed);
+            Ele1.set(setSpeed);
+            Ele2.set(setSpeed);
             SmartDashboard.putNumber("eleSpeed", setSpeed);
         }
 
@@ -45,7 +45,7 @@ public class HardwareMappings {
          */
         public static void setElevatorPositionsAuto() {
 
-//int case
+        //int case
 
             // TODO: set positions for this
         }
