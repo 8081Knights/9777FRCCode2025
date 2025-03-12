@@ -4,7 +4,8 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.PS4Controller;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -14,7 +15,7 @@ public class Robot extends TimedRobot {
 
   private final RobotContainer m_robotContainer;
 
-  public PS4Controller controller1 = new PS4Controller(0); 
+  public XboxController controller1 = new XboxController(0); 
 
   public Robot() {
     m_robotContainer = new RobotContainer();
@@ -76,11 +77,21 @@ public class Robot extends TimedRobot {
     
 
     // Elevator basic control
-    if (controller1.getR2Axis() > .05) {
-      HardwareMappings.QuickMethods.setElevatorPower(controller1.getR2Axis());
+    if (controller1.getRightTriggerAxis() > .05) {
+      HardwareMappings.QuickMethods.setElevatorPower( controller1.getRightTriggerAxis());
+    } else if (controller1.getLeftTriggerAxis() > .05) { 
+      HardwareMappings.QuickMethods.setElevatorPower(-controller1.getLeftTriggerAxis());
+    } else {
+      HardwareMappings.QuickMethods.setElevatorPower(0);
     }
-    if (controller1.getL2Axis() > .05) {
-      HardwareMappings.QuickMethods.setElevatorPower(controller1.getL2Axis());
+
+
+    if (controller1.getAButton()) {
+      HardwareMappings.intakeOuttake.set(.5);
+    } else if (controller1.getYButton()) {
+      HardwareMappings.intakeOuttake.set(-.5);
+    } else {
+      HardwareMappings.intakeOuttake.set(0);
     }
   }
 
