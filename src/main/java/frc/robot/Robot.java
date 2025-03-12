@@ -99,7 +99,6 @@ public class Robot extends TimedRobot {
       HardwareMappings.QuickMethods.setJointPower(0);
     }
 
-
     if (controller1.getAButton()) {
       HardwareMappings.intakeOuttake.set(.5);
     } else if (controller1.getYButton()) {
