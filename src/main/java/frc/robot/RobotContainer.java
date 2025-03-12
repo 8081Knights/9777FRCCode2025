@@ -8,6 +8,7 @@ import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -41,7 +42,9 @@ public class RobotContainer {
     private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
-        autoChooser = AutoBuilder.buildAutoChooser("Tests");
+        NamedCommands.registerCommand("setElevatorPosition", Commands.runOnce(() -> {HardwareMappings.QuickMethods.setElevatorPower(.5);}));
+       autoChooser = AutoBuilder.buildAutoChooser("tests");
+//HardwareMappings.QuickMethods.setElevatorPositionsAuto()
         SmartDashboard.putData("Auto Mode", autoChooser);
         configureBindings();
     }

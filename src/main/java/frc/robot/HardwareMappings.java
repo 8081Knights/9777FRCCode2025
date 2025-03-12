@@ -38,5 +38,16 @@ public class HardwareMappings {
             // Ele2.set(setSpeed);
             SmartDashboard.putNumber("eleSpeed", setSpeed);
         }
+
+        /**
+         * Set elevator positions
+         * @param case sets the case of the elevator postion: floor is zero
+         */
+        public static void setElevatorPositionsAuto() {
+
+//int case
+
+            // TODO: set positions for this
+        }
     }
 }
