@@ -39,16 +39,20 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
-    private final SendableChooser<Command> autoChooser;
+   // private final SendableChooser<Command> autoChooser;
 
     public RobotContainer() {
-        NamedCommands.registerCommand("setElevatorPosition", Commands.runOnce(() -> {HardwareMappings.QuickMethods.setElevatorPower(.5);}));
-       autoChooser = AutoBuilder.buildAutoChooser("tests");
+       // configureNamedCommands();
+       //autoChooser = AutoBuilder.buildAutoChooser("New Auto");
 //HardwareMappings.QuickMethods.setElevatorPositionsAuto()
-        SmartDashboard.putData("Auto Mode", autoChooser);
+        //SmartDashboard.putData("Auto Mode", autoChooser);
         configureBindings();
     }
 
+    private void configureNamedCommands(){
+        NamedCommands.registerCommand("marker1", Commands.print("Passed marker 1"));
+        NamedCommands.registerCommand("setElevatorPosition", getAutonomousCommand());
+    }
     private void configureBindings() {
         // Note that X is defined as forward according to WPILib convention,
         // and Y is defined as to the left according to WPILib convention.
