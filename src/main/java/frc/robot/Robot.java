@@ -81,31 +81,41 @@ public class Robot extends TimedRobot {
 
     // Elevator basic control
     if (controller1.getRightTriggerAxis() > .05) {
-      HardwareMappings.QuickMethods.setElevatorPower( controller1.getRightTriggerAxis());
+      // HardwareMappings.QuickMethods.setElevatorPower( controller1.getRightTriggerAxis());
+      // HardwareMappings.QuickMethods.setJointPower(controller1.getRightTriggerAxis());
+      HardwareMappings.intakeOuttake.set(controller1.getRightTriggerAxis());
+
+
     } else if (controller1.getLeftTriggerAxis() > .05) { 
-      HardwareMappings.QuickMethods.setElevatorPower(-controller1.getLeftTriggerAxis());
-    } else {
-      HardwareMappings.QuickMethods.setElevatorPower(0);
-    }
+      // HardwareMappings.QuickMethods.setJointPower(-controller1.getLeftTriggerAxis());
 
-    //joint basic control
-    if(controller1.getLeftBumperButton())
-    {
-      HardwareMappings.QuickMethods.setJointPower(0.3);
-    } else if(controller1.getRightBumperButton()){
-      HardwareMappings.QuickMethods.setJointPower(-0.3);
-    }
-    else{
-      HardwareMappings.QuickMethods.setJointPower(0);
-    }
+      HardwareMappings.intakeOuttake.set(-controller1.getLeftTriggerAxis());
 
-    if (controller1.getAButton()) {
-      HardwareMappings.intakeOuttake.set(.5);
-    } else if (controller1.getYButton()) {
-      HardwareMappings.intakeOuttake.set(-.5);
     } else {
+      // HardwareMappings.QuickMethods.setJointPower(0);
+
       HardwareMappings.intakeOuttake.set(0);
+
     }
+
+    // //joint basic control
+    // if(controller1.getAButton())
+    // {
+    //   HardwareMappings.QuickMethods.setJointPower(0.3);
+    // } else if(controller1.getBButton()){
+    //   HardwareMappings.QuickMethods.setJointPower(-0.3);
+    // }
+    // else{
+    //   HardwareMappings.QuickMethods.setJointPower(0);
+    // }
+
+    // if (controller1.getAButton()) {
+    //   HardwareMappings.intakeOuttake.set(.5);
+    // } else if (controller1.getYButton()) {
+    //   HardwareMappings.intakeOuttake.set(-.5);
+    // } else {
+    //   HardwareMappings.intakeOuttake.set(0);
+    // }
   }
 
   @Override
