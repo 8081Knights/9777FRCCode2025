@@ -49,5 +49,23 @@ public class HardwareMappings {
 
             // TODO: set positions for this
         }
+
+        /**
+         * sets the speed of the joint
+         * @param setSpeed
+         */
+        public static void setJointPower(double setSpeed) {
+        	joint.set(setSpeed);
+        	SmartDashboard.putNumber("jointSpeed", setSpeed);
+        }
+
+        /**
+         * sets the speed of the intake outake
+         * @param setSpeed
+         */
+        public static void setIntakeOuttakePower(double setSpeed) {
+        	intakeOuttake.set(setSpeed);
+        	SmartDashboard.putNumber("intakeOuttakeSpeed", setSpeed);
+        }
     }
 }

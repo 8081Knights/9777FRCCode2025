@@ -6,6 +6,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController;
+
+import javax.lang.model.util.ElementScanner14;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -83,6 +86,17 @@ public class Robot extends TimedRobot {
       HardwareMappings.QuickMethods.setElevatorPower(-controller1.getLeftTriggerAxis());
     } else {
       HardwareMappings.QuickMethods.setElevatorPower(0);
+    }
+
+    //joint basic control
+    if(controller1.getLeftBumperButton())
+    {
+      HardwareMappings.QuickMethods.setJointPower(0.3);
+    } else if(controller1.getRightBumperButton()){
+      HardwareMappings.QuickMethods.setJointPower(-0.3);
+    }
+    else{
+      HardwareMappings.QuickMethods.setJointPower(0);
     }
 
 
