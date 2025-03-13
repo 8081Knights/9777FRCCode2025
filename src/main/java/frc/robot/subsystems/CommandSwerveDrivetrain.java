@@ -183,7 +183,9 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
             startSimThread();
         }
     }
-
+    //public void configureAutoBuilder() {
+//
+    //}
     /**
      * Returns a command that applies the specified control request to this swerve drivetrain.
      *

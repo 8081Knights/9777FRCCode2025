@@ -41,11 +41,11 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
-     private final SendableChooser<Command> autoChooser;
+    //  private final SendableChooser<Command> autoChooser;
     
-    public RobotContainer() {
-         autoChooser = AutoBuilder.buildAutoChooser("New Auto");
-         SmartDashboard.putData("Auto Mode", autoChooser);
+     public RobotContainer() {
+        //  autoChooser = AutoBuilder.buildAutoChooser("New Auto");
+        //  SmartDashboard.putData("Auto Mode", autoChooser);
         
         configureNamedCommands();
         configureBindings();
@@ -56,9 +56,9 @@ public class RobotContainer {
         
     }
 
-    public Command getAutoCommand() {
-            return autoChooser.getSelected();
-    }
+    // public Command getAutoCommand() {
+    //         // return autoChooser.getSelected();
+    // }
 
     private void configureNamedCommands() {
         NamedCommands.registerCommand("marker1", Commands.print("Passed marker 1"));
