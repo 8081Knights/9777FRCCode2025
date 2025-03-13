@@ -8,6 +8,7 @@ import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
 import com.pathplanner.lib.auto.AutoBuilder;
+import edu.wpi.first.math.trajectory.Trajectory;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.swerve.SwerveRequest;
 
@@ -40,19 +41,23 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
-    // private final SendableChooser<Command> autoChooser;
+     private final SendableChooser<Command> autoChooser;
     
     public RobotContainer() {
-        // autoChooser = AutoBuilder.buildAutoChooser("Tests");
-        // SmartDashboard.putData("Auto Mode", autoChooser);
+         autoChooser = AutoBuilder.buildAutoChooser("New Auto");
+         SmartDashboard.putData("Auto Mode", autoChooser);
         
         configureNamedCommands();
-        
+        configureBindings();
         
         
         HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
         // SmartDashboard.putData("Auto Mode", autoChooser);
-        configureBindings();
+        
+    }
+
+    public Command getAutoCommand() {
+            return autoChooser.getSelected();
     }
 
     private void configureNamedCommands() {

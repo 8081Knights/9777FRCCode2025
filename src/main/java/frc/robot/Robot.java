@@ -19,6 +19,8 @@ public class Robot extends TimedRobot {
   private final RobotContainer m_robotContainer;
 
   public XboxController controller1 = new XboxController(0); 
+  public XboxController controller2 = new XboxController(1); 
+
 
   public Robot() {
     m_robotContainer = new RobotContainer();
@@ -81,20 +83,34 @@ public class Robot extends TimedRobot {
 
     // Elevator basic control
     if (controller1.getRightTriggerAxis() > .05) {
-      // HardwareMappings.QuickMethods.setElevatorPower( controller1.getRightTriggerAxis());
-      // HardwareMappings.QuickMethods.setJointPower(controller1.getRightTriggerAxis());
-      HardwareMappings.intakeOuttake.set(controller1.getRightTriggerAxis());
-
-
+      HardwareMappings.QuickMethods.setElevatorPower( controller1.getRightTriggerAxis());
     } else if (controller1.getLeftTriggerAxis() > .05) { 
-      // HardwareMappings.QuickMethods.setJointPower(-controller1.getLeftTriggerAxis());
+      HardwareMappings.QuickMethods.setElevatorPower(-controller1.getLeftTriggerAxis());
+    } else {
+      HardwareMappings.QuickMethods.setElevatorPower(0);
+    }
 
-      HardwareMappings.intakeOuttake.set(-controller1.getLeftTriggerAxis());
+
+    if (controller2.getAButton()) {
+      HardwareMappings.intakeOuttake.set(.1);
+
+
+    } else if (controller2.getBButton()) { 
+      HardwareMappings.intakeOuttake.set(-.1);
 
     } else {
-      // HardwareMappings.QuickMethods.setJointPower(0);
-
       HardwareMappings.intakeOuttake.set(0);
+
+    }
+
+    if (controller2.getRightTriggerAxis() > .05) {
+      HardwareMappings.QuickMethods.setJointPower(controller2.getRightTriggerAxis());
+
+
+    } else if (controller2.getLeftTriggerAxis() > .05) { 
+      HardwareMappings.QuickMethods.setJointPower(-controller2.getLeftTriggerAxis());
+    } else {
+      HardwareMappings.QuickMethods.setJointPower(0);
 
     }
 
