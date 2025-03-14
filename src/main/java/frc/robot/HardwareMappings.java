@@ -5,6 +5,7 @@ import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkFlexConfig;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -26,6 +27,8 @@ public class HardwareMappings {
     public static RelativeEncoder joinRelativeEncoder = Ele1.getEncoder();
     public static RelativeEncoder intakEncoder = Ele2.getEncoder();
     public static SparkClosedLoopController jointPIDController = joint.getClosedLoopController();
+    public static SparkFlexConfig jointConfig = new SparkFlexConfig();
+    
 
 
 
