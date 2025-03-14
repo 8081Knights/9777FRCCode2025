@@ -1,6 +1,9 @@
 package frc.robot;
 
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.spark.SparkBase.ControlType;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
@@ -31,6 +34,13 @@ public class HardwareMappings {
     
 
 
+    public static void init() {
+        HardwareMappings.jointConfig.closedLoop.p(.5).outputRange(-.8, .8);
+        HardwareMappings.joint.configure(HardwareMappings.jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    }
+    
+
+
 
 
 
@@ -52,9 +62,20 @@ public class HardwareMappings {
          * @param case sets the case of the elevator postion: floor is zero
          */
         public static void setElevatorPositionsAuto(int caseNum) {
-
-
-            // TODO: set positions for this
+            switch (caseNum) {
+                case 0:
+                    HardwareMappings.jointPIDController.setReference(0, ControlType.kPosition);
+                    break;
+                case 1:
+                    HardwareMappings.jointPIDController.setReference(-3, ControlType.kPosition);
+                    break;
+                case 2:
+                    HardwareMappings.jointPIDController.setReference(-5, ControlType.kPosition);
+                    break;
+                default:
+                    System.out.println("Oh no, make case in HardwareMappings");
+                    break;
+            }
         }
 
         /**

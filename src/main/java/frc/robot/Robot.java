@@ -6,9 +6,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.XboxController;
-
-import javax.lang.model.util.ElementScanner14;
 
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
@@ -28,9 +25,7 @@ public class Robot extends TimedRobot {
 
 
   public Robot() {
-    HardwareMappings.jointConfig.closedLoop.p(.5).outputRange(-.8, .8);
-    HardwareMappings.joint.configure(HardwareMappings.jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-
+    HardwareMappings.init();
     m_robotContainer = new RobotContainer();
   }
 
@@ -110,25 +105,19 @@ public class Robot extends TimedRobot {
 
 
     if (controller2.getAButton()) {
-      HardwareMappings.jointPIDController.setReference(-3, ControlType.kPosition);
-      SmartDashboard.putNumber("setPoseJoint", -3);
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);
     } else if (controller2.getBButton()) { 
-      HardwareMappings.jointPIDController.setReference(-5, ControlType.kPosition);
-      SmartDashboard.putNumber("setPoseJoint", -5);
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
     } else if (controller2.getXButton()) {
-      HardwareMappings.jointPIDController.setReference(0, ControlType.kPosition);
-      SmartDashboard.putNumber("setPoseJoint", 0);
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
     }
 
     // if (controller2.getRightTriggerAxis() > .05) {
     //   HardwareMappings.QuickMethods.setJointPower(controller2.getRightTriggerAxis());
-
-
     // } else if (controller2.getLeftTriggerAxis() > .05) { 
     //   HardwareMappings.QuickMethods.setJointPower(-controller2.getLeftTriggerAxis());
     // } else {
     //   HardwareMappings.QuickMethods.setJointPower(0);
-
     // }
 
     // //joint basic control
