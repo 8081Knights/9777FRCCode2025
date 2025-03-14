@@ -131,13 +131,13 @@ public class Robot extends TimedRobot {
     //   HardwareMappings.QuickMethods.setJointPower(0);
     // }
 
-    // if (controller1.getAButton()) {
-    //   HardwareMappings.intakeOuttake.set(.5);
-    // } else if (controller1.getYButton()) {
-    //   HardwareMappings.intakeOuttake.set(-.5);
-    // } else {
-    //   HardwareMappings.intakeOuttake.set(0);
-    // }
+    if (controller2.getXButton()) {
+      HardwareMappings.intakeOuttake.set(.5);
+    } else if (controller2.getYButton()) {
+      HardwareMappings.intakeOuttake.set(-.5);
+    } else {
+      HardwareMappings.intakeOuttake.set(0);
+    }
   }
 
   @Override
