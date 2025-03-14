@@ -1,8 +1,7 @@
 package frc.robot;
 
-import com.ctre.phoenix6.hardware.CANcoder;
-import com.ctre.phoenix6.hardware.TalonFX;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -19,13 +18,14 @@ public class HardwareMappings {
     // NON- drive motors and sensors
     public static SparkMax Ele1 = new SparkMax(7, MotorType.kBrushless);
     public static SparkMax Ele2 = new SparkMax(6, MotorType.kBrushless);
-    RelativeEncoder ele1Enc = Ele1.getEncoder();
-    RelativeEncoder ele2Enc = Ele2.getEncoder();
+    public static RelativeEncoder ele1Enc = Ele1.getEncoder();
+    public static RelativeEncoder ele2Enc = Ele2.getEncoder();
 
     public static SparkFlex joint = new SparkFlex(21, MotorType.kBrushless);
     public static SparkFlex intakeOuttake = new SparkFlex(23, MotorType.kBrushless);
-    RelativeEncoder joinRelativeEncoder = Ele1.getEncoder();
-    RelativeEncoder intakEncoder = Ele2.getEncoder();
+    public static RelativeEncoder joinRelativeEncoder = Ele1.getEncoder();
+    public static RelativeEncoder intakEncoder = Ele2.getEncoder();
+    public static SparkClosedLoopController jointPIDController = joint.getClosedLoopController();
 
 
 

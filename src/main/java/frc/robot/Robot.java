@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.XboxController;
 
 import javax.lang.model.util.ElementScanner14;
 
+import com.revrobotics.spark.SparkBase.ControlType;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -91,16 +93,21 @@ public class Robot extends TimedRobot {
     }
 
 
+    // if (controller2.getAButton()) {
+    //   HardwareMappings.intakeOuttake.set(.1);
+    // } else if (controller2.getBButton()) { 
+    //   HardwareMappings.intakeOuttake.set(-.1);
+    // } else {
+    //   HardwareMappings.intakeOuttake.set(0);
+    // }
+
+
     if (controller2.getAButton()) {
-      HardwareMappings.intakeOuttake.set(.1);
-
-
+      HardwareMappings.jointPIDController.setReference(-3, ControlType.kPosition);
     } else if (controller2.getBButton()) { 
-      HardwareMappings.intakeOuttake.set(-.1);
-
+      HardwareMappings.jointPIDController.setReference(-5, ControlType.kPosition);
     } else {
-      HardwareMappings.intakeOuttake.set(0);
-
+      HardwareMappings.jointPIDController.setReference(0, ControlType.kPosition);
     }
 
     if (controller2.getRightTriggerAxis() > .05) {
