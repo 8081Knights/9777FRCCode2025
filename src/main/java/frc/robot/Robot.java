@@ -14,7 +14,7 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-
+//TODO sam can you check the ollama thing, it throws an error everytime i try to use it
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
@@ -112,13 +112,13 @@ public class Robot extends TimedRobot {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
     }
 
-    // if (controller2.getRightTriggerAxis() > .05) {
-    //   HardwareMappings.QuickMethods.setJointPower(controller2.getRightTriggerAxis());
-    // } else if (controller2.getLeftTriggerAxis() > .05) { 
-    //   HardwareMappings.QuickMethods.setJointPower(-controller2.getLeftTriggerAxis());
-    // } else {
-    //   HardwareMappings.QuickMethods.setJointPower(0);
-    // }
+    if (controller2.getRightTriggerAxis() > .05) {
+      HardwareMappings.QuickMethods.setJointPower(controller2.getRightTriggerAxis() / 3.0);
+    } else if (controller2.getLeftTriggerAxis() > .05) { 
+      HardwareMappings.QuickMethods.setJointPower(-controller2.getLeftTriggerAxis() / 3.0);
+    } else {
+      HardwareMappings.QuickMethods.setJointPower(0);
+    }
 
     // //joint basic control
     // if(controller1.getAButton())
