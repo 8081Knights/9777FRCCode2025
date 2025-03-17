@@ -41,7 +41,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
   //  private SwerveDrivePoseEstimator poseEstimator = new SwerveDrivePoseEstimator(Constants.Swerve.swerveKinematics, getYaw(), getPositions(), getPose());
 
   private final SwerveRequest.ApplyRobotSpeeds m_pathApplyRobotSpeeds = new SwerveRequest.ApplyRobotSpeeds();
-  
+
     /* Blue alliance sees forward as 0 degrees (toward red alliance wall) */
     private static final Rotation2d kBlueAlliancePerspectiveRotation = Rotation2d.kZero;
     /* Red alliance sees forward as 180 degrees (toward blue alliance wall) */
@@ -89,21 +89,6 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         )
     );
 
-
-//public void resetPose()
-//{
-//    super.resetPose(null);
-//}
-
-/* 
-    public Pose2d getPose() {
-        return poseEstimator.getEstimatedPosition();
-      }
-      public Rotation2d getYaw() {
-        return Rotation2d.fromDegrees(gyro1.getAngle() * (Constants.Swerve.invertGyro ? 1 : -1));
-    
-      }
-*/
     /*
      * SysId routine for characterizing rotation.
      * This is used to find PID gains for the FieldCentricFacingAngle HeadingController.
@@ -216,7 +201,7 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
         configureAutoBuilder();
     }
 
-     private void configureAutoBuilder() {
+    private void configureAutoBuilder() {
         try {
             var config = RobotConfig.fromGUISettings();
             AutoBuilder.configure(
@@ -345,16 +330,4 @@ public class CommandSwerveDrivetrain extends TunerSwerveDrivetrain implements Su
     ) {
         super.addVisionMeasurement(visionRobotPoseMeters, Utils.fpgaToCurrentTime(timestampSeconds), visionMeasurementStdDevs);
     }
-
-
-
-
-
-
-/* 
-    //custom code
-    public Pose2d getPose() {
-        return this.clo
-    }
-        */
 }
