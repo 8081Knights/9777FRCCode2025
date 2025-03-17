@@ -44,10 +44,12 @@ public class RobotContainer {
       private final SendableChooser<Command> autoChooser;
     
      public RobotContainer() {
-          autoChooser = AutoBuilder.buildAutoChooser("New Auto");
+          
+        configureNamedCommands();
+        autoChooser = AutoBuilder.buildAutoChooser("New New Path");
           SmartDashboard.putData("Auto Mode", autoChooser);
         
-        configureNamedCommands();
+        
         configureBindings();
         
         

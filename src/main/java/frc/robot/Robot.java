@@ -14,7 +14,6 @@ import com.revrobotics.spark.SparkBase.ResetMode;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-//TODO sam can you check the ollama thing, it throws an error everytime i try to use it
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 

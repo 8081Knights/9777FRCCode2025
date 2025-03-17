@@ -35,8 +35,8 @@ public class HardwareMappings {
 
 
     public static void init() {
-        HardwareMappings.jointConfig.closedLoop.p(.5).outputRange(-.8, .8);
-        HardwareMappings.joint.configure(HardwareMappings.jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        jointConfig.closedLoop.p(.5).outputRange(-.8, .8);
+        joint.configure(jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
     
 
