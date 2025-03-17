@@ -44,7 +44,7 @@ public class RobotContainer {
       private final SendableChooser<Command> autoChooser;
     
      public RobotContainer() {
-          autoChooser = AutoBuilder.buildAutoChooser();
+          autoChooser = AutoBuilder.buildAutoChooser("New Auto");
           SmartDashboard.putData("Auto Mode", autoChooser);
         
         configureNamedCommands();
