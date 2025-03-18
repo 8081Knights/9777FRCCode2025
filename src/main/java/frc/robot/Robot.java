@@ -137,6 +137,9 @@ public class Robot extends TimedRobot {
     } else {
       HardwareMappings.intakeOuttake.set(0);
     }
+
+
+    SmartDashboard.putBoolean("beamReader", HardwareMappings.lightReader.get());
   }
 
   @Override

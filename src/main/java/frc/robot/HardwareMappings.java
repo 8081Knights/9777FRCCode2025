@@ -11,6 +11,7 @@ import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkFlexConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
@@ -43,6 +44,9 @@ public class HardwareMappings {
     public static RelativeEncoder intakEncoder = Ele2.getEncoder();
     public static SparkClosedLoopController jointPIDController = joint.getClosedLoopController();
     public static SparkFlexConfig jointConfig = new SparkFlexConfig();
+
+
+    public static DigitalInput lightReader = new DigitalInput(0);
     
 
 
