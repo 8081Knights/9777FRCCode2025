@@ -9,11 +9,17 @@ import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.spark.config.SparkFlexConfig;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 
 public class HardwareMappings {
+
+    // Drivetrain objects for random stuff
+    CommandXboxController joystick1Controller = new CommandXboxController(0);
+
 
     // TODO: reset the pigion can to something other than 0 and regenerate the swerve code if needed
     // 23 works 
@@ -24,6 +30,12 @@ public class HardwareMappings {
     public static SparkMax Ele2 = new SparkMax(6, MotorType.kBrushless);
     public static RelativeEncoder ele1Enc = Ele1.getEncoder();
     public static RelativeEncoder ele2Enc = Ele2.getEncoder();
+    public static SparkClosedLoopController ele1Ctrlr = Ele1.getClosedLoopController();
+    public static SparkMaxConfig ele1Conf = new SparkMaxConfig();
+    public static SparkClosedLoopController ele2Ctrlr = Ele2.getClosedLoopController();
+    public static SparkMaxConfig ele2Conf = new SparkMaxConfig();
+    
+    
 
     public static SparkFlex joint = new SparkFlex(21, MotorType.kBrushless);
     public static SparkFlex intakeOuttake = new SparkFlex(23, MotorType.kBrushless);
@@ -34,8 +46,11 @@ public class HardwareMappings {
     
 
 
+
+
     public static void init() {
-        jointConfig.closedLoop.p(.5).outputRange(-.8, .8);
+        jointConfig.closedLoop.p(.09).d(.01).outputRange(-.5, .5);
+
         joint.configure(jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
     
@@ -64,10 +79,10 @@ public class HardwareMappings {
         public static void setElevatorPositionsAuto(int caseNum) {
             switch (caseNum) {
                 case 0:
-                    HardwareMappings.jointPIDController.setReference(0, ControlType.kPosition);
+                    HardwareMappings.jointPIDController.setReference(-.3, ControlType.kPosition);
                     break;
                 case 1:
-                    HardwareMappings.jointPIDController.setReference(-3, ControlType.kPosition);
+                    HardwareMappings.jointPIDController.setReference(-1.2, ControlType.kPosition);
                     break;
                 case 2:
                     HardwareMappings.jointPIDController.setReference(-5, ControlType.kPosition);
