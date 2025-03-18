@@ -54,8 +54,13 @@ public class HardwareMappings {
 
     public static void init() {
         jointConfig.closedLoop.p(.09).d(.01).outputRange(-.5, .5);
-
         joint.configure(jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
+        ele1Conf.closedLoop.p(.09).d(.01).outputRange(-.5, .5);
+        Ele1.configure(ele1Conf, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+
+        ele2Conf.closedLoop.p(.09).d(.01).outputRange(-.5, .5);
+        Ele2.configure(ele2Conf, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
     
 
@@ -81,6 +86,26 @@ public class HardwareMappings {
          * @param case sets the case of the elevator postion: floor is zero
          */
         public static void setElevatorPositionsAuto(int caseNum) {
+            switch (caseNum) {
+                case 0:
+                    ele1Ctrlr.setReference(0, ControlType.kPosition);
+                    ele2Ctrlr.setReference(0, ControlType.kPosition);
+                    break;
+                case 1:
+                    ele1Ctrlr.setReference(6, ControlType.kPosition);
+                    ele2Ctrlr.setReference(6, ControlType.kPosition);
+                    break;
+                case 2:
+                    ele1Ctrlr.setReference(12, ControlType.kPosition);
+                    ele2Ctrlr.setReference(12, ControlType.kPosition);
+                    break;
+                default:
+                    System.out.println("Oh no, make case in HardwareMappings - setElevatorPositionsAuto");
+                    break;
+            }
+        }
+
+        public static void setJointPositionsAuto(int caseNum) {
             switch (caseNum) {
                 case 0:
                     HardwareMappings.jointPIDController.setReference(-.3, ControlType.kPosition);

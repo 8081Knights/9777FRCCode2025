@@ -7,9 +7,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.revrobotics.spark.SparkBase.ControlType;
-import com.revrobotics.spark.SparkBase.PersistMode;
-import com.revrobotics.spark.SparkBase.ResetMode;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -104,11 +101,11 @@ public class Robot extends TimedRobot {
 
 
     if (controller2.getAButton()) {
-      HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);
+      HardwareMappings.QuickMethods.setJointPositionsAuto(1);
     } else if (controller2.getBButton()) { 
-      HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
+      HardwareMappings.QuickMethods.setJointPositionsAuto(2);
     } else if (controller2.getXButton()) {
-      HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
+      HardwareMappings.QuickMethods.setJointPositionsAuto(0);
     }
 
     // if (controller2.getRightTriggerAxis() > .05) {
