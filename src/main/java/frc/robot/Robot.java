@@ -136,6 +136,14 @@ public class Robot extends TimedRobot {
     }
 
 
+    if (controller2.getPOV() == 0) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
+    } else if (controller2.getPOV() == 90) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);
+    } else if (controller2.getPOV() == 180) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
+    }
+
     SmartDashboard.putBoolean("beamReader", HardwareMappings.lightReader.get());
   }
 
