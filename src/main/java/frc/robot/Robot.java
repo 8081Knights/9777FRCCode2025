@@ -81,14 +81,14 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     
 
-    // Elevator basic control
-    if (controller1.getRightTriggerAxis() > .001) {
-      HardwareMappings.QuickMethods.setElevatorPower(controller1.getRightTriggerAxis());
-    } else if (controller1.getLeftTriggerAxis() > .001) { 
-      HardwareMappings.QuickMethods.setElevatorPower(-controller1.getLeftTriggerAxis());
-    } else {
-      HardwareMappings.QuickMethods.setElevatorPower(0);
-    }
+    // // Elevator basic control
+    // if (controller1.getRightTriggerAxis() > .001) {
+    //   HardwareMappings.QuickMethods.setElevatorPower(controller1.getRightTriggerAxis());
+    // } else if (controller1.getLeftTriggerAxis() > .001) { 
+    //   HardwareMappings.QuickMethods.setElevatorPower(-controller1.getLeftTriggerAxis());
+    // } else {
+    //   HardwareMappings.QuickMethods.setElevatorPower(0);
+    // }
 
 
     // if (controller2.getAButton()) {
@@ -106,6 +106,8 @@ public class Robot extends TimedRobot {
       HardwareMappings.QuickMethods.setJointPositionsAuto(2);
     } else if (controller2.getXButton()) {
       HardwareMappings.QuickMethods.setJointPositionsAuto(0);
+    } else if (controller2.getYButton()) {
+      HardwareMappings.QuickMethods.setJointPositionsAuto(3);
     }
 
     // if (controller2.getRightTriggerAxis() > .05) {
@@ -127,10 +129,10 @@ public class Robot extends TimedRobot {
     //   HardwareMappings.QuickMethods.setJointPower(0);
     // }
 
-    if (controller2.getXButton()) {
-      HardwareMappings.intakeOuttake.set(.3);
-    } else if (controller2.getYButton()) {
-      HardwareMappings.intakeOuttake.set(-.3);
+    if (controller2.getLeftBumperButton()) {
+      HardwareMappings.intakeOuttake.set(.2);
+    } else if (controller2.getRightBumperButton()) {
+      HardwareMappings.intakeOuttake.set(-.2);
     } else {
       HardwareMappings.intakeOuttake.set(0);
     }

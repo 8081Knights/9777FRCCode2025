@@ -28,7 +28,7 @@ public class HardwareMappings {
 
     // NON- drive motors and sensors
     public static SparkMax Ele1 = new SparkMax(7, MotorType.kBrushless);
-    public static SparkMax Ele2 = new SparkMax(6, MotorType.kBrushless);
+    public static SparkMax Ele2 = new SparkMax(2, MotorType.kBrushless);
     public static RelativeEncoder ele1Enc = Ele1.getEncoder();
     public static RelativeEncoder ele2Enc = Ele2.getEncoder();
     public static SparkClosedLoopController ele1Ctrlr = Ele1.getClosedLoopController();
@@ -38,8 +38,8 @@ public class HardwareMappings {
     
     
 
-    public static SparkFlex joint = new SparkFlex(21, MotorType.kBrushless);
-    public static SparkFlex intakeOuttake = new SparkFlex(23, MotorType.kBrushless);
+    public static SparkFlex joint = new SparkFlex(31, MotorType.kBrushless);
+    public static SparkFlex intakeOuttake = new SparkFlex(33, MotorType.kBrushless);
     public static RelativeEncoder joinRelativeEncoder = Ele1.getEncoder();
     public static RelativeEncoder intakEncoder = Ele2.getEncoder();
     public static SparkClosedLoopController jointPIDController = joint.getClosedLoopController();
@@ -53,13 +53,13 @@ public class HardwareMappings {
 
 
     public static void init() {
-        jointConfig.closedLoop.p(.09).d(.01).outputRange(-.5, .5);
+        jointConfig.closedLoop.p(.09d).d(.01d).outputRange(-.2, .4);
         joint.configure(jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        ele1Conf.closedLoop.p(.09).d(.01).outputRange(-.5, .5);
+        ele1Conf.closedLoop.p(.09d).d(.01d).outputRange(-.5, .5);
         Ele1.configure(ele1Conf, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        ele2Conf.closedLoop.p(.09).d(.01).outputRange(-.5, .5);
+        ele2Conf.closedLoop.p(.09d).d(.01d).outputRange(-.5, .5);
         Ele2.configure(ele2Conf, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
     
@@ -92,12 +92,12 @@ public class HardwareMappings {
                     ele2Ctrlr.setReference(0, ControlType.kPosition);
                     break;
                 case 1:
-                    ele1Ctrlr.setReference(6, ControlType.kPosition);
-                    ele2Ctrlr.setReference(6, ControlType.kPosition);
-                    break;
-                case 2:
                     ele1Ctrlr.setReference(12, ControlType.kPosition);
                     ele2Ctrlr.setReference(12, ControlType.kPosition);
+                    break;
+                case 2:
+                    ele1Ctrlr.setReference(24, ControlType.kPosition);
+                    ele2Ctrlr.setReference(24, ControlType.kPosition);
                     break;
                 default:
                     System.out.println("Oh no, make case in HardwareMappings - setElevatorPositionsAuto");
@@ -115,6 +115,9 @@ public class HardwareMappings {
                     break;
                 case 2:
                     HardwareMappings.jointPIDController.setReference(-5, ControlType.kPosition);
+                    break;
+                case 3:
+                    HardwareMappings.jointPIDController.setReference(-7, ControlType.kPosition);
                     break;
                 default:
                     System.out.println("Oh no, make case in HardwareMappings");
