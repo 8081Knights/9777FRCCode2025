@@ -40,13 +40,13 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
-      private final SendableChooser<Command> autoChooser;
+    private final SendableChooser<Command> autoChooser;
     
      public RobotContainer() {
           
         configureNamedCommands();
-        autoChooser = AutoBuilder.buildAutoChooser("New New Path");
-          SmartDashboard.putData("Auto Mode", autoChooser);
+        autoChooser = AutoBuilder.buildAutoChooser();
+        SmartDashboard.putData("Auto Mode", autoChooser);
         
         
         configureBindings();
@@ -64,7 +64,7 @@ public class RobotContainer {
 
     private void configureNamedCommands() {
         NamedCommands.registerCommand("marker1", Commands.print("Passed marker 1"));
-        NamedCommands.registerCommand("setElevatorPosition", getAutonomousCommand());
+        NamedCommands.registerCommand("setElevatorPosition", Commands.print("tried to do somethin"));
     }
 
     private void configureBindings() {
@@ -80,7 +80,7 @@ public class RobotContainer {
                                                                                     // negative X (left)
                 ));
 
-        joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
+        // joystick.a().whileTrue(drivetrain.applyRequest(() -> brake));
         joystick.b().whileTrue(drivetrain.applyRequest(
                 () -> point.withModuleDirection(new Rotation2d(-joystick.getLeftY(), -joystick.getLeftX()))));
 
@@ -98,6 +98,6 @@ public class RobotContainer {
     }
 
     public Command getAutonomousCommand() {
-        return Commands.print("No autonomous command configured");
+        return  autoChooser.getSelected();
     }
 }

@@ -53,13 +53,12 @@ public class HardwareMappings {
 
 
     public static void init() {
-        jointConfig.closedLoop.p(.09d).d(.01d).outputRange(-.2, .4);
+        jointConfig.closedLoop.p(.1d).d(.01d).outputRange(-.2, .4);
         joint.configure(jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        ele1Conf.closedLoop.p(.09d).d(.01d).outputRange(-.5, .5);
+        ele1Conf.closedLoop.p(.09d).d(.01d).outputRange(-.1, .7);
         Ele1.configure(ele1Conf, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-
-        ele2Conf.closedLoop.p(.09d).d(.01d).outputRange(-.5, .5);
+        ele2Conf.closedLoop.p(.09d).d(.01d).outputRange(-.1, .7);
         Ele2.configure(ele2Conf, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
     

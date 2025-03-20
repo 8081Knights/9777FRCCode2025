@@ -130,9 +130,9 @@ public class Robot extends TimedRobot {
     // }
 
     if (controller2.getLeftBumperButton()) {
-      HardwareMappings.intakeOuttake.set(.2);
+      HardwareMappings.intakeOuttake.set(.15);
     } else if (controller2.getRightBumperButton()) {
-      HardwareMappings.intakeOuttake.set(-.2);
+      HardwareMappings.intakeOuttake.set(-.15);
     } else {
       HardwareMappings.intakeOuttake.set(0);
     }
