@@ -5,6 +5,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -18,6 +19,10 @@ public class Robot extends TimedRobot {
 
   public XboxController controller1 = new XboxController(0); 
   public XboxController controller2 = new XboxController(1); 
+
+  boolean emergencyElevator = false;
+
+  
 
 
   public Robot() {
@@ -64,6 +69,46 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    if (controller2.getAButton()) {
+      HardwareMappings.QuickMethods.setJointPositionsAuto(1);
+    } else if (controller2.getBButton()) {
+      HardwareMappings.QuickMethods.setJointPositionsAuto(2);
+    } else if (controller2.getXButton()) {
+      HardwareMappings.QuickMethods.setJointPositionsAuto(0);
+    } else if (controller2.getYButton()) {
+      HardwareMappings.QuickMethods.setJointPositionsAuto(3);
+    }
+
+
+    if (!emergencyElevator) {
+      if (controller2.getLeftTriggerAxis()> .05) {
+        HardwareMappings.intakeOuttake.set(controller2.getLeftTriggerAxis() * .15);
+      } else if (controller2.getRightTriggerAxis()> .05) {
+        HardwareMappings.intakeOuttake.set(controller2.getRightTriggerAxis() * -.15);
+      } else {
+        HardwareMappings.intakeOuttake.set(0);
+      }
+    } else {
+      controller2.setRumble(RumbleType.kBothRumble, .8);
+      HardwareMappings.elevatoroffset += controller2.getRightTriggerAxis() * -.05 + controller2.getLeftTriggerAxis() * .05;
+    }
+    
+
+    emergencyElevator = controller2.getStartButton();
+
+
+    if (controller2.getPOV() == 0) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
+    } else if (controller2.getPOV() == 45) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);
+    } else if (controller2.getPOV() == 90) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
+    } else if (controller2.getPOV() == 135) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(4);
+    } else if (controller2.getPOV() == 180) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(5);
+    }
+
 
   }
 
@@ -81,14 +126,14 @@ public class Robot extends TimedRobot {
   public void testPeriodic() {
     
 
-    // // Elevator basic control
-    // if (controller1.getRightTriggerAxis() > .001) {
-    //   HardwareMappings.QuickMethods.setElevatorPower(controller1.getRightTriggerAxis());
-    // } else if (controller1.getLeftTriggerAxis() > .001) { 
-    //   HardwareMappings.QuickMethods.setElevatorPower(-controller1.getLeftTriggerAxis());
-    // } else {
-    //   HardwareMappings.QuickMethods.setElevatorPower(0);
-    // }
+    // Elevator basic control
+    if (controller1.getRightTriggerAxis() > .001) {
+      HardwareMappings.QuickMethods.setElevatorPower(controller1.getRightTriggerAxis()*.2);
+    } else if (controller1.getLeftTriggerAxis() > .001) { 
+      HardwareMappings.QuickMethods.setElevatorPower(-controller1.getLeftTriggerAxis()*.2);
+    } else {
+      HardwareMappings.QuickMethods.setElevatorPower(0);
+    }
 
 
     // if (controller2.getAButton()) {
@@ -138,13 +183,13 @@ public class Robot extends TimedRobot {
     }
 
 
-    if (controller2.getPOV() == 0) {
-      HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
-    } else if (controller2.getPOV() == 90) {
-      HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);
-    } else if (controller2.getPOV() == 180) {
-      HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
-    }
+    // if (controller2.getPOV() == 0) {
+    //   HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
+    // } else if (controller2.getPOV() == 90) {
+    //   HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);
+    // } else if (controller2.getPOV() == 180) {
+    //   HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
+    // }
 
     SmartDashboard.putBoolean("beamReader", HardwareMappings.lightReader.get());
   }

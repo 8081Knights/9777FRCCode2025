@@ -63,8 +63,10 @@ public class RobotContainer {
      }
 
     private void configureNamedCommands() {
-        NamedCommands.registerCommand("marker1", Commands.print("Passed marker 1"));
+        NamedCommands.registerCommand("marker1", Commands.print("Auto works, plz don't disable"));
         NamedCommands.registerCommand("setElevatorPosition", Commands.print("tried to do somethin"));
+        
+        
     }
 
     private void configureBindings() {

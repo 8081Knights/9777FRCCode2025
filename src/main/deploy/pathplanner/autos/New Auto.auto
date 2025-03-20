@@ -5,15 +5,15 @@
     "data": {
       "commands": [
         {
-          "type": "path",
-          "data": {
-            "pathName": "New New Path"
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "marker1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "New New Path"
           }
         }
       ]
