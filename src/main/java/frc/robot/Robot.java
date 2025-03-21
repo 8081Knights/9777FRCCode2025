@@ -90,7 +90,7 @@ public class Robot extends TimedRobot {
       }
     } else {
       controller2.setRumble(RumbleType.kBothRumble, .8);
-      HardwareMappings.elevatoroffset += controller2.getRightTriggerAxis() * -.05 + controller2.getLeftTriggerAxis() * .05;
+      HardwareMappings.elevatoroffset += controller2.getRightTriggerAxis() * .2 + controller2.getLeftTriggerAxis() * -.2;
     }
     
 
@@ -104,7 +104,7 @@ public class Robot extends TimedRobot {
     } else if (controller2.getPOV() == 90) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
     } else if (controller2.getPOV() == 135) {
-      HardwareMappings.QuickMethods.setElevatorPositionsAuto(4);
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(3);
     } else if (controller2.getPOV() == 180) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(5);
     }

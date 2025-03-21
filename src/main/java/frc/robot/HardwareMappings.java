@@ -90,26 +90,26 @@ public class HardwareMappings {
         public static void setElevatorPositionsAuto(int caseNum) {
             switch (caseNum) {
                 case 0:
-                    ele1Ctrlr.setReference(0, ControlType.kPosition);
-                    ele2Ctrlr.setReference(0, ControlType.kPosition);
+                    ele1Ctrlr.setReference(0   + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(0   + elevatoroffset, ControlType.kPosition);
                     break;
                 case 1:
-                    ele1Ctrlr.setReference(15, ControlType.kPosition);
-                    ele2Ctrlr.setReference(15, ControlType.kPosition);
+                    ele1Ctrlr.setReference(15  + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(15  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 2:
-                    ele1Ctrlr.setReference(48, ControlType.kPosition);
-                    ele2Ctrlr.setReference(48, ControlType.kPosition);
+                    ele1Ctrlr.setReference(40  + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(40  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 3:
-                    ele1Ctrlr.setReference(64, ControlType.kPosition);
-                    ele2Ctrlr.setReference(64, ControlType.kPosition);
+                    ele1Ctrlr.setReference(72  + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(72  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 4:
 
                 case 5: 
-                    ele1Ctrlr.setReference(140, ControlType.kPosition);
-                    ele2Ctrlr.setReference(140, ControlType.kPosition);
+                    ele1Ctrlr.setReference(140 + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(140 + elevatoroffset, ControlType.kPosition);
                     break;
                 default:
                     System.out.println("Oh no, make case in HardwareMappings - setElevatorPositionsAuto");
@@ -123,10 +123,10 @@ public class HardwareMappings {
                     HardwareMappings.jointPIDController.setReference(-.3, ControlType.kPosition);
                     break;
                 case 1:
-                    HardwareMappings.jointPIDController.setReference(-1, ControlType.kPosition);
+                    HardwareMappings.jointPIDController.setReference(-.9, ControlType.kPosition);
                     break;
                 case 2:
-                    HardwareMappings.jointPIDController.setReference(-3, ControlType.kPosition);
+                    HardwareMappings.jointPIDController.setReference(-1.4, ControlType.kPosition);
                     break;
                 case 3:
                     HardwareMappings.jointPIDController.setReference(-4.5, ControlType.kPosition);
