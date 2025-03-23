@@ -81,16 +81,27 @@ public class Robot extends TimedRobot {
 
 
     if (!emergencyElevator) {
+      controller2.setRumble(RumbleType.kBothRumble, 0);
       if (controller2.getLeftTriggerAxis()> .05) {
         HardwareMappings.intakeOuttake.set(controller2.getLeftTriggerAxis() * .15);
-      } else if (controller2.getRightTriggerAxis()> .05) {
+      } else if(controller1.getLeftTriggerAxis() > 0.5) {
+        HardwareMappings.intakeOuttake.set(controller1.getLeftTriggerAxis() * .15);
+      }else if (controller2.getRightTriggerAxis()> .05) {
         HardwareMappings.intakeOuttake.set(controller2.getRightTriggerAxis() * -.15);
+      } else if(controller1.getRightTriggerAxis() > 0.5){
+        HardwareMappings.intakeOuttake.set(controller1.getRightTriggerAxis() * -.15);
+      }
+      else if(controller2.getRightBumperButton()){
+        HardwareMappings.intakeOuttake.set(-0.9);
+      } else if(controller2.getLeftBumperButton()){
+        HardwareMappings.intakeOuttake.set(0.9);
       } else {
         HardwareMappings.intakeOuttake.set(0);
       }
     } else {
       controller2.setRumble(RumbleType.kBothRumble, .8);
-      HardwareMappings.elevatoroffset += controller2.getRightTriggerAxis() * .2 + controller2.getLeftTriggerAxis() * -.2;
+      HardwareMappings.elevatoroffset += controller2.getRightTriggerAxis() * 1 + controller2.getLeftTriggerAxis() * -1;
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(HardwareMappings.currentElevatorCase);
     }
     
 
@@ -99,15 +110,30 @@ public class Robot extends TimedRobot {
 
     if (controller2.getPOV() == 0) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
+      HardwareMappings.speedFactor = 1;
     } else if (controller2.getPOV() == 45) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);
+      HardwareMappings.speedFactor = 1;
     } else if (controller2.getPOV() == 90) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
+      HardwareMappings.speedFactor = .15;
     } else if (controller2.getPOV() == 135) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(3);
+      HardwareMappings.speedFactor = .15;
     } else if (controller2.getPOV() == 180) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(5);
-    }
+      HardwareMappings.speedFactor = .15;
+    } else if (controller2.getPOV() == 270) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(6);
+      HardwareMappings.speedFactor = .15;
+    } else if (controller2.getPOV() == 225) {
+      HardwareMappings.QuickMethods.setElevatorPositionsAuto(7);
+      HardwareMappings.speedFactor = .15;
+    } else if (controller2.getPOV() == 315) {
+    HardwareMappings.QuickMethods.setElevatorPositionsAuto(8);
+    HardwareMappings.speedFactor = .15;
+  }
+    
 
 
   }
@@ -127,6 +153,7 @@ public class Robot extends TimedRobot {
     
 
     // Elevator basic control
+    /*
     if (controller1.getRightTriggerAxis() > .001) {
       HardwareMappings.QuickMethods.setElevatorPower(controller1.getRightTriggerAxis()*.2);
     } else if (controller1.getLeftTriggerAxis() > .001) { 
@@ -135,7 +162,7 @@ public class Robot extends TimedRobot {
       HardwareMappings.QuickMethods.setElevatorPower(0);
     }
 
-
+*/
     // if (controller2.getAButton()) {
     //   HardwareMappings.intakeOuttake.set(.1);
     // } else if (controller2.getBButton()) { 
@@ -144,7 +171,7 @@ public class Robot extends TimedRobot {
     //   HardwareMappings.intakeOuttake.set(0);
     // }
 
-
+    //shoulder basic control
     if (controller2.getAButton()) {
       HardwareMappings.QuickMethods.setJointPositionsAuto(1);
     } else if (controller2.getBButton()) { 

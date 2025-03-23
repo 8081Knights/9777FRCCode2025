@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.sysid.SysIdRoutine.Direction;
 
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
@@ -65,7 +64,25 @@ public class RobotContainer {
     private void configureNamedCommands() {
         NamedCommands.registerCommand("marker1", Commands.print("Auto works, plz don't disable"));
         NamedCommands.registerCommand("setElevatorPosition", Commands.print("tried to do somethin"));
+        //NamedCommands.registerCommand("JointIntakePos2");
+        NamedCommands.registerCommand("JointIntakePos2", new JointIntakePos());
+        NamedCommands.registerCommand("moveJointToSlide", Commands.run(
+            () -> {HardwareMappings.QuickMethods.setJointPositionsAuto(1);}
+            ));
+        NamedCommands.registerCommand("slidesUp", Commands.run(
+            () -> {HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);}
+            ));
+        NamedCommands.registerCommand("jointDown", Commands.runOnce(
+            () -> {HardwareMappings.QuickMethods.setJointPositionsAuto(2);}
+            ));
+        NamedCommands.registerCommand("innout", Commands.run(
+            () -> {HardwareMappings.intakeOuttake.set(-.15);}
+            ));
         
+        NamedCommands.registerCommand("StopInnout", Commands.run(
+        () -> {HardwareMappings.intakeOuttake.set(0);}
+        ));
+
         
     }
 
@@ -74,10 +91,10 @@ public class RobotContainer {
         // and Y is defined as to the left according to WPILib convention.
         drivetrain.setDefaultCommand(
                 // Drivetrain will execute this command periodically
-                drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed) // Drive forward with
+                drivetrain.applyRequest(() -> drive.withVelocityX(-joystick.getLeftY() * MaxSpeed * HardwareMappings.speedFactor) // Drive forward with
                                                                                                    // negative Y
                                                                                                    // (forward)
-                        .withVelocityY(-joystick.getLeftX() * MaxSpeed) // Drive left with negative X (left)
+                        .withVelocityY(-joystick.getLeftX() * MaxSpeed * HardwareMappings.speedFactor) // Drive left with negative X (left)
                         .withRotationalRate(-joystick.getRightX() * MaxAngularRate) // Drive counterclockwise with
                                                                                     // negative X (left)
                 ));

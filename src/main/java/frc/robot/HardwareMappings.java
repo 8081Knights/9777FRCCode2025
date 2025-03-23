@@ -50,18 +50,22 @@ public class HardwareMappings {
 
 
     public static double elevatoroffset = 0;
+    public static int currentElevatorCase = 0;
+    public static boolean safeUp;
+    public static boolean safeDown;
+    public static double speedFactor = 1;
     
 
 
 
 
     public static void init() {
-        jointConfig.closedLoop.p(.1d).d(.01d).outputRange(-.2, .4);
+        jointConfig.closedLoop.p(.11d).d(.01d).outputRange(-.2, .4);
         joint.configure(jointConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
 
-        ele1Conf.closedLoop.p(.09d).d(.01d).outputRange(-.7, .8);
+        ele1Conf.closedLoop.p(.09d).d(.01d).outputRange(-.7, .9);
         Ele1.configure(ele1Conf, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
-        ele2Conf.closedLoop.p(.09d).d(.01d).outputRange(-.7, .8);
+        ele2Conf.closedLoop.p(.09d).d(.01d).outputRange(-.7, .9);
         Ele2.configure(ele2Conf, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
     
@@ -88,6 +92,12 @@ public class HardwareMappings {
          * @param caseNum sets the case of the elevator postion: floor is zero
          */
         public static void setElevatorPositionsAuto(int caseNum) {
+            if(!safeUp && caseNum > 0) {
+                return;
+            }
+            if (!safeDown && caseNum < 3) {
+                return;
+            }
             switch (caseNum) {
                 case 0:
                     ele1Ctrlr.setReference(0   + elevatoroffset, ControlType.kPosition);
@@ -98,38 +108,59 @@ public class HardwareMappings {
                     ele2Ctrlr.setReference(15  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 2:
-                    ele1Ctrlr.setReference(40  + elevatoroffset, ControlType.kPosition);
-                    ele2Ctrlr.setReference(40  + elevatoroffset, ControlType.kPosition);
+                    ele1Ctrlr.setReference(35  + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(35  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 3:
                     ele1Ctrlr.setReference(72  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(72  + elevatoroffset, ControlType.kPosition);
                     break;
-                case 4:
 
                 case 5: 
                     ele1Ctrlr.setReference(140 + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(140 + elevatoroffset, ControlType.kPosition);
                     break;
+                    // begin algea code
+                case 6:
+                    ele1Ctrlr.setReference(57  + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(57  + elevatoroffset, ControlType.kPosition);
+                    break;
+                case 7:
+                    ele1Ctrlr.setReference(93  + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(93  + elevatoroffset, ControlType.kPosition);
+                    break;
+                case 8:
+                    ele1Ctrlr.setReference(5  + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(5  + elevatoroffset, ControlType.kPosition);
                 default:
                     System.out.println("Oh no, make case in HardwareMappings - setElevatorPositionsAuto");
                     break;
             }
+            currentElevatorCase = caseNum; 
+
         }
 
         public static void setJointPositionsAuto(int caseNum) {
             switch (caseNum) {
                 case 0:
                     HardwareMappings.jointPIDController.setReference(-.3, ControlType.kPosition);
+                    safeDown = true;
+                    safeUp = false;
                     break;
                 case 1:
-                    HardwareMappings.jointPIDController.setReference(-.9, ControlType.kPosition);
+                    HardwareMappings.jointPIDController.setReference(-1.05, ControlType.kPosition);
+                    safeDown = true;
+                    safeUp = true;
                     break;
                 case 2:
                     HardwareMappings.jointPIDController.setReference(-1.4, ControlType.kPosition);
+                    safeDown = true;
+                    safeUp = true;
                     break;
                 case 3:
                     HardwareMappings.jointPIDController.setReference(-4.5, ControlType.kPosition);
+                    safeDown = false;
+                    safeUp = true;
                     break;
                 default:
                     System.out.println("Oh no, make case in HardwareMappings");
