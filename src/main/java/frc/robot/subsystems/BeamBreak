@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 /**
+* https://github.com/WestwoodRobotics/FRC-2025/blob/main/src/main/java/frc/robot/sensors/DIO/BeamBreak.java
  * The BeamBreak class represents a digital beam break sensor subsystem.
  * It uses a DigitalInput to detect whether the beam is broken or not.
  * 
