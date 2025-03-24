@@ -100,36 +100,43 @@ public class HardwareMappings {
             }
             switch (caseNum) {
                 case 0:
+                    // zero-pos
                     ele1Ctrlr.setReference(0   + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(0   + elevatoroffset, ControlType.kPosition);
                     break;
                 case 1:
+                    //level-1 / trough
                     ele1Ctrlr.setReference(15  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(15  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 2:
+                    //level-2
                     ele1Ctrlr.setReference(35  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(35  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 3:
+                    //level-3
                     ele1Ctrlr.setReference(72  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(72  + elevatoroffset, ControlType.kPosition);
                     break;
-
                 case 5: 
+                    //level-4
                     ele1Ctrlr.setReference(140 + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(140 + elevatoroffset, ControlType.kPosition);
                     break;
-                    // begin algea code
                 case 6:
+                    // begin algea code
+                    //low algea
                     ele1Ctrlr.setReference(57  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(57  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 7:
+                    //high algea
                     ele1Ctrlr.setReference(93  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(93  + elevatoroffset, ControlType.kPosition);
                     break;
                 case 8:
+                    // processor
                     ele1Ctrlr.setReference(5  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(5  + elevatoroffset, ControlType.kPosition);
                 default:
