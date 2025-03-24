@@ -69,7 +69,17 @@ public class RobotContainer {
         NamedCommands.registerCommand("marker1", Commands.print("Auto works, plz don't disable"));
         NamedCommands.registerCommand("setElevatorPosition", Commands.print("tried to do somethin"));
         //NamedCommands.registerCommand("JointIntakePos2");
+
+        //commands using new classes
         NamedCommands.registerCommand("JointIntakePos2", new JointIntakePos());
+        NamedCommands.registerCommand("SlidesUp2", new SlidesUp());
+        NamedCommands.registerCommand("JointDown2", new JointDown());
+        NamedCommands.registerCommand("InNOut2", new InNOut());
+        NamedCommands.registerCommand("StopInNOut2", new StopInNOut());
+        
+        //old-broken-code
+        //i think moveJointToSlide is the same as jointIntakePos
+        
         NamedCommands.registerCommand("moveJointToSlide", Commands.run(
             () -> {HardwareMappings.QuickMethods.setJointPositionsAuto(1);}
             ));
