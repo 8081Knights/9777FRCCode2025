@@ -69,7 +69,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("marker1", Commands.print("Auto works, plz don't disable"));
         NamedCommands.registerCommand("setElevatorPosition", Commands.print("tried to do somethin"));
         //NamedCommands.registerCommand("JointIntakePos2");
-
+        // TODO: finish reistering all commands for auto 
         //commands using new classes
         NamedCommands.registerCommand("JointIntakePos", new JointIntakePos());
         NamedCommands.registerCommand("JointDown", new JointDown());

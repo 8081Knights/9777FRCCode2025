@@ -5,12 +5,13 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.*;
+import frc.robot.subsystems.sensors.*;
 
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class BeamIsBroken extends Command {
   /** Creates a new BeamIsBroken. */
+  // TODO: add a requirement and have a beam break sensor object to detect if it is tripped
   public BeamIsBroken() {
     boolean isBroken = false;
     // Use addRequirements() here to declare subsystem dependencies.
