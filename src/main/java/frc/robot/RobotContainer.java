@@ -71,29 +71,29 @@ public class RobotContainer {
         //NamedCommands.registerCommand("JointIntakePos2");
 
         //commands using new classes
-        NamedCommands.registerCommand("JointIntakePos2", new JointIntakePos());
-        NamedCommands.registerCommand("SlidesUp2", new SlidesUp());
-        NamedCommands.registerCommand("JointDown2", new JointDown());
-        NamedCommands.registerCommand("InNOut2", new InNOut());
-        NamedCommands.registerCommand("StopInNOut2", new StopInNOut());
+        NamedCommands.registerCommand("JointIntakePos", new JointIntakePos());
+        NamedCommands.registerCommand("SlidesUp", new SlidesUp());
+        NamedCommands.registerCommand("JointDown", new JointDown());
+        NamedCommands.registerCommand("InNOut", new InNOut());
+        NamedCommands.registerCommand("StopInNOut", new StopInNOut());
         
         //old-broken-code
         //i think moveJointToSlide is the same as jointIntakePos
         
-        NamedCommands.registerCommand("moveJointToSlide", Commands.run(
+        NamedCommands.registerCommand("moveJointToSlideOLD", Commands.run(
             () -> {HardwareMappings.QuickMethods.setJointPositionsAuto(1);}
             ));
-        NamedCommands.registerCommand("slidesUp", Commands.run(
+        NamedCommands.registerCommand("slidesUpOLD", Commands.run(
             () -> {HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);}
             ));
-        NamedCommands.registerCommand("jointDown", Commands.runOnce(
+        NamedCommands.registerCommand("jointDownOLD", Commands.runOnce(
             () -> {HardwareMappings.QuickMethods.setJointPositionsAuto(2);}
             ));
-        NamedCommands.registerCommand("innout", Commands.run(
+        NamedCommands.registerCommand("innoutOLD", Commands.run(
             () -> {HardwareMappings.intakeOuttake.set(-.15);}
             ));
         
-        NamedCommands.registerCommand("StopInnout", Commands.run(
+        NamedCommands.registerCommand("StopInnoutOLD", Commands.run(
         () -> {HardwareMappings.intakeOuttake.set(0);}
         ));
 
