@@ -23,6 +23,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 import frc.robot.generated.TunerConstants;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
+import frc.robot.subsystems.sensors.BeamBreak;
 
 
 public class RobotContainer {
@@ -42,6 +43,8 @@ public class RobotContainer {
     private final CommandXboxController joystick = new CommandXboxController(0);
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
+
+    public final BeamBreak beamy = new BeamBreak(0);
 
     private final SendableChooser<Command> autoChooser;
     
@@ -77,26 +80,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("SlidesUp", new SlidesUp());
         NamedCommands.registerCommand("InNOut", new InNOut());
         NamedCommands.registerCommand("StopInNOut", new StopInNOut());
-        
-        //old-broken-code
-        //i think moveJointToSlide is the same as jointIntakePos
-        
-        NamedCommands.registerCommand("moveJointToSlideOLD", Commands.run(
-            () -> {HardwareMappings.QuickMethods.setJointPositionsAuto(1);}
-            ));
-        NamedCommands.registerCommand("slidesUpOLD", Commands.run(
-            () -> {HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);}
-            ));
-        NamedCommands.registerCommand("jointDownOLD", Commands.runOnce(
-            () -> {HardwareMappings.QuickMethods.setJointPositionsAuto(2);}
-            ));
-        NamedCommands.registerCommand("innoutOLD", Commands.run(
-            () -> {HardwareMappings.intakeOuttake.set(-.15);}
-            ));
-        
-        NamedCommands.registerCommand("StopInnoutOLD", Commands.run(
-        () -> {HardwareMappings.intakeOuttake.set(0);}
-        ));
+        NamedCommands.registerCommand("WaitTillBeamIsBroken", new WaitTillBeamIsBroken(beamy));
 
         
     }
