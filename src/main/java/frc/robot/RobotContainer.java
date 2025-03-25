@@ -72,8 +72,10 @@ public class RobotContainer {
 
         //commands using new classes
         NamedCommands.registerCommand("JointIntakePos", new JointIntakePos());
-        NamedCommands.registerCommand("SlidesUp", new SlidesUp());
         NamedCommands.registerCommand("JointDown", new JointDown());
+        NamedCommands.registerCommand("JointL4Pos", new JointL4Pos());
+        NamedCommands.registerCommand("SlidesDown", new SlidesDown());
+        NamedCommands.registerCommand("SlidesUp", new SlidesUp());
         NamedCommands.registerCommand("InNOut", new InNOut());
         NamedCommands.registerCommand("StopInNOut", new StopInNOut());
         
