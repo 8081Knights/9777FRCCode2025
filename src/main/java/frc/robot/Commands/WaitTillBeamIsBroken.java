@@ -9,12 +9,12 @@ import frc.robot.subsystems.sensors.*;
 
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class BeamIsBroken extends Command {
+public class WaitTillBeamIsBroken extends Command {
   /** Creates a new BeamIsBroken. */
   public BeamBreak beamy;
   public final boolean startState;
   // TODO: add a requirement and have a beam break sensor object to detect if it is tripped
-  public BeamIsBroken(BeamBreak beamy) {
+  public WaitTillBeamIsBroken(BeamBreak beamy) {
     this.beamy = beamy;
     startState = beamy.isBroken();
     // Use addRequirements() here to declare subsystem dependencies.
