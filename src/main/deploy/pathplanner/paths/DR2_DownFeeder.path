@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 5.0366709183673475,
+        "y": 2.7826211734693866
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.2921729130481983,
+        "y": 1.8782827426183233
+      },
+      "isLocked": false,
+      "linkedName": "DR2"
+    },
+    {
+      "anchor": {
+        "x": 1.529655612244898,
+        "y": 0.7977997448979579
+      },
+      "prevControl": {
+        "x": 2.609027287776815,
+        "y": 1.3404028034085975
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "DownFeeder"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 55.0
+  },
+  "reversed": false,
+  "folder": "RightPaths",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 119.99999999999999
+  },
+  "useDefaultConstraints": true
+}

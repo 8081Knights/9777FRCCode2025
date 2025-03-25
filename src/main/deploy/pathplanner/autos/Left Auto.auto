@@ -1,0 +1,49 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartL_UR2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "UR2_UpFeed"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "UpFeed_UR1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "UR1_UpFeed"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "UpFeed_UL1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "UL1_UpFeed"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}

@@ -1,0 +1,56 @@
+{
+  "version": "2025.0",
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "StartR_DR1"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": null
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DR1_DownFeeder"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DownFeeder_DR2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DR2_DownFeeder"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "DownFeeder_DL1"
+          }
+        }
+      ]
+    }
+  },
+  "resetOdom": true,
+  "folder": null,
+  "choreoAuto": false
+}
