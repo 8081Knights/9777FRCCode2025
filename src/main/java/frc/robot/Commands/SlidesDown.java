@@ -11,7 +11,7 @@ import frc.robot.HardwareMappings;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class SlidesDown extends Command {
-  /** Creates a new JointIntakePos. */
+  /** Creates a new SlidesDown. */
   public SlidesDown() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
