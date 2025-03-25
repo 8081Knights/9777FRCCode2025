@@ -75,7 +75,7 @@ public class HardwareMappings {
 
 
 
-    static class QuickMethods {
+    public static class QuickMethods {
 
         /**
          * Sets the speed of the overall elevators (abbreviates individual speeds)
