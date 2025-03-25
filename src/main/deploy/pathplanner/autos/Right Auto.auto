@@ -41,11 +41,23 @@
                       "data": {
                         "name": "marker1"
                       }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "JointL4Pos"
+                      }
                     }
                   ]
                 }
               }
             ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "InNOut"
           }
         },
         {
@@ -72,6 +84,12 @@
                       "type": "named",
                       "data": {
                         "name": "JointDown"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "BeamIsBroken"
                       }
                     }
                   ]
