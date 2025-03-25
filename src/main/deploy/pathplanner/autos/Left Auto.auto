@@ -19,13 +19,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "UpFeed_UR1"
+            "pathName": "UpFeed_UL2"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "UR1_UpFeed"
+            "pathName": "UL2_UpFeed"
           }
         },
         {

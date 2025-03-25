@@ -43,13 +43,26 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "DL1_DownFeeder"
+                  "pathName": "DR1_DownFeeder"
                 }
               },
               {
-                "type": "named",
+                "type": "sequential",
                 "data": {
-                  "name": "SlidesDown"
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "SlidesDown"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "JointDown"
+                      }
+                    }
+                  ]
                 }
               }
             ]
@@ -58,13 +71,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "DownFeeder_DR2"
+            "pathName": "DownFeeder_DL2"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "DR2_DownFeeder"
+            "pathName": "DL2_DownFeeder"
           }
         },
         {
