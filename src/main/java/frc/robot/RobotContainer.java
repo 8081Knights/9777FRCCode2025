@@ -81,8 +81,6 @@ public class RobotContainer {
         NamedCommands.registerCommand("InNOut", new InNOut());
         NamedCommands.registerCommand("StopInNOut", new StopInNOut());
         NamedCommands.registerCommand("WaitTillBeamIsBroken", new WaitTillBeamIsBroken(beamy));
-
-        
     }
 
     private void configureBindings() {
