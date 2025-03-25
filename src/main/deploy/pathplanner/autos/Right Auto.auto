@@ -5,9 +5,35 @@
     "data": {
       "commands": [
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "StartR_DR1"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "StartR_DR1"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "JointIntakePos"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "SlidesUp"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
         },
         {
@@ -15,18 +41,18 @@
           "data": {
             "commands": [
               {
+                "type": "path",
+                "data": {
+                  "pathName": "DL1_DownFeeder"
+                }
+              },
+              {
                 "type": "named",
                 "data": {
-                  "name": null
+                  "name": "SlidesDown"
                 }
               }
             ]
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "DR1_DownFeeder"
           }
         },
         {
