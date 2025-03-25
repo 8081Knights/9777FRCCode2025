@@ -27,7 +27,19 @@
                     {
                       "type": "named",
                       "data": {
+                        "name": "marker1"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
                         "name": "SlidesUp"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "marker1"
                       }
                     }
                   ]
