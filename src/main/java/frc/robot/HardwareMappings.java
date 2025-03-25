@@ -160,6 +160,7 @@ public class HardwareMappings {
                     safeUp = true;
                     break;
                 case 2:
+                //for l4
                     HardwareMappings.jointPIDController.setReference(-1.4, ControlType.kPosition);
                     safeDown = true;
                     safeUp = true;
