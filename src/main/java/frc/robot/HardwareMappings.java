@@ -47,9 +47,9 @@ public class HardwareMappings {
     public static SparkFlexConfig jointConfig = new SparkFlexConfig();
 
 
-    //public static DigitalInput lightReader = new DigitalInput(0);
+    public static DigitalInput lightReader = new DigitalInput(0);
 
-    public static BeamBreak beamy = new BeamBreak(0);
+    // public static BeamBreak beamy = new BeamBreak(0);
 
 
     public static double elevatoroffset = 0;

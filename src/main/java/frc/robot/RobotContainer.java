@@ -57,7 +57,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("slidesUp", new SlidesUp());
         NamedCommands.registerCommand("inNOut", new InNOut());
         NamedCommands.registerCommand("stopInNOut", new StopInNOut());
-        NamedCommands.registerCommand("waitTillBeamIsBroken", new WaitTillBeamIsBroken(HardwareMappings.beamy));
+        // NamedCommands.registerCommand("waitTillBeamIsBroken", new WaitTillBeamIsBroken(HardwareMappings.beamy));
     }
 
     private final SendableChooser<Command> autoChooser;

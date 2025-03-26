@@ -97,9 +97,9 @@ public class Robot extends TimedRobot {
         HardwareMappings.intakeOuttake.set(0.9);
       }
         else if(controller2.getLeftY() > 0.5){
-          while(!HardwareMappings.beamy.isBroken()){
-          HardwareMappings.intakeOuttake.set(-0.5);
-          }
+          // while(!HardwareMappings.beamy.isBroken()){
+          // HardwareMappings.intakeOuttake.set(-0.5);
+          // }
           
         }
        else {
@@ -140,8 +140,10 @@ public class Robot extends TimedRobot {
     HardwareMappings.QuickMethods.setElevatorPositionsAuto(8);
     HardwareMappings.speedFactor = .15;
   }
+    SmartDashboard.putBoolean("lightreader", HardwareMappings.lightReader.get());
+
     
-  SmartDashboard.putBoolean("beamReader", HardwareMappings.beamy.isBroken());
+  // SmartDashboard.putBoolean("beamReader", HardwareMappings.beamy.isBroken());
 SmartDashboard.updateValues();
   }
 
@@ -225,7 +227,7 @@ SmartDashboard.updateValues();
     //   HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
     // }
 
-    SmartDashboard.putBoolean("beamReader", HardwareMappings.beamy.isBroken());
+    // SmartDashboard.putBoolean("beamReader", HardwareMappings.beamy.isBroken());
   }
 
   @Override
