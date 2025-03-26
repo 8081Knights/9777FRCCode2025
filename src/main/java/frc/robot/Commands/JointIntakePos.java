@@ -19,12 +19,15 @@ public class JointIntakePos extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    HardwareMappings.QuickMethods.setJointPositionsAuto(1);  
+    HardwareMappings.QuickMethods.setJointPositionsAuto(1);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    System.out.println("execute is running and should terminate soon.");
+    super.cancel();
+  }
 
   // Called once the command ends or is interrupted.
  

@@ -20,6 +20,7 @@ public class SlidesUp extends Command {
   @Override
   public void initialize() {
     HardwareMappings.QuickMethods.setElevatorPositionsAuto(1);
+    System.out.println("SlidesUp");
   }
 
   // Called every time the scheduler runs while the command is scheduled.

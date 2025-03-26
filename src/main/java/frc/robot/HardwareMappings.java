@@ -14,6 +14,7 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.subsystems.sensors.BeamBreak;
 
 
 public class HardwareMappings {
@@ -46,7 +47,9 @@ public class HardwareMappings {
     public static SparkFlexConfig jointConfig = new SparkFlexConfig();
 
 
-    public static DigitalInput lightReader = new DigitalInput(0);
+    //public static DigitalInput lightReader = new DigitalInput(0);
+
+    public static BeamBreak beamy = new BeamBreak(0);
 
 
     public static double elevatoroffset = 0;

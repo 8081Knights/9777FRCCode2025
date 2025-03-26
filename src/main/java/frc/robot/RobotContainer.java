@@ -44,7 +44,21 @@ public class RobotContainer {
 
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
-    public final BeamBreak beamy = new BeamBreak(0);
+    private void configureNamedCommands() {
+        NamedCommands.registerCommand("marker1", Commands.print("previous command finished"));
+        NamedCommands.registerCommand("setElevatorPosition", Commands.print("tried to do somethin"));
+        //NamedCommands.registerCommand("JointIntakePos2");
+        // TODO: finish registering all commands for auto 
+        //commands using new classes
+        NamedCommands.registerCommand("jointIntakePos", new JointIntakePos());
+        NamedCommands.registerCommand("jointDown", new JointDown());
+        NamedCommands.registerCommand("jointL4Pos", new JointL4Pos());
+        NamedCommands.registerCommand("slidesDown", new SlidesDown());
+        NamedCommands.registerCommand("slidesUp", new SlidesUp());
+        NamedCommands.registerCommand("inNOut", new InNOut());
+        NamedCommands.registerCommand("stopInNOut", new StopInNOut());
+        NamedCommands.registerCommand("waitTillBeamIsBroken", new WaitTillBeamIsBroken(HardwareMappings.beamy));
+    }
 
     private final SendableChooser<Command> autoChooser;
     
@@ -56,9 +70,6 @@ public class RobotContainer {
         
         
         configureBindings();
-        
-        
-        HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
         // SmartDashboard.putData("Auto Mode", autoChooser);
         
     }
@@ -66,22 +77,6 @@ public class RobotContainer {
      public Command getAutoCommand() {
         return autoChooser.getSelected();
      }
-
-    private void configureNamedCommands() {
-        NamedCommands.registerCommand("marker1", Commands.print("previous command finished"));
-        NamedCommands.registerCommand("setElevatorPosition", Commands.print("tried to do somethin"));
-        //NamedCommands.registerCommand("JointIntakePos2");
-        // TODO: finish registering all commands for auto 
-        //commands using new classes
-        NamedCommands.registerCommand("JointIntakePos", new JointIntakePos());
-        NamedCommands.registerCommand("JointDown", new JointDown());
-        NamedCommands.registerCommand("JointL4Pos", new JointL4Pos());
-        NamedCommands.registerCommand("SlidesDown", new SlidesDown());
-        NamedCommands.registerCommand("SlidesUp", new SlidesUp());
-        NamedCommands.registerCommand("InNOut", new InNOut());
-        NamedCommands.registerCommand("StopInNOut", new StopInNOut());
-        NamedCommands.registerCommand("WaitTillBeamIsBroken", new WaitTillBeamIsBroken(beamy));
-    }
 
     private void configureBindings() {
         // Note that X is defined as forward according to WPILib convention,

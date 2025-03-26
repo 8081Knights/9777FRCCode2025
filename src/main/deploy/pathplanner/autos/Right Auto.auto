@@ -21,31 +21,19 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "JointIntakePos"
+                        "name": "jointIntakePos"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "marker1"
+                        "name": "jointL4Pos"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "SlidesUp"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "marker1"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "JointL4Pos"
+                        "name": "slidesUp"
                       }
                     }
                   ]
@@ -57,7 +45,19 @@
         {
           "type": "named",
           "data": {
-            "name": "InNOut"
+            "name": "inNOut"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopInNOut"
           }
         },
         {
@@ -77,19 +77,19 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "SlidesDown"
+                        "name": "slidesDown"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "JointDown"
+                        "name": "jointDown"
                       }
                     },
                     {
                       "type": "named",
                       "data": {
-                        "name": "BeamIsBroken"
+                        "name": "beamIsBroken"
                       }
                     }
                   ]

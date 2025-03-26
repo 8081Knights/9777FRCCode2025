@@ -5,35 +5,21 @@
     "data": {
       "commands": [
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "TestPathSHORT"
-                }
-              },
-              {
-                "type": "sequential",
-                "data": {
-                  "commands": [
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "BeamIsBroken"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "JointIntakePos"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
+            "pathName": "TestPathSHORT"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "jointIntakePos"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "inNOut"
           }
         }
       ]
