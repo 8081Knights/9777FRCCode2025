@@ -139,6 +139,11 @@ public class Robot extends TimedRobot {
     } else if (controller2.getPOV() == 315) {
     HardwareMappings.QuickMethods.setElevatorPositionsAuto(8);
     HardwareMappings.speedFactor = .15;
+    //the angle being 2 never happens, dont need to use that position
+  } else if(controller2.getPOV() == 2){
+    SmartDashboard.putBoolean("rightButtonPressed", true);
+    HardwareMappings.QuickMethods.setElevatorPositionsAuto(10);
+    HardwareMappings.speedFactor = .15;
   }
     SmartDashboard.putBoolean("lightreader", HardwareMappings.lightReader.get());
 
