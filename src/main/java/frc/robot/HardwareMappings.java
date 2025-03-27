@@ -47,6 +47,8 @@ public class HardwareMappings {
     public static SparkFlexConfig jointConfig = new SparkFlexConfig();
 
 
+    // I think your stuff isnt connected properly run "git restore e17ebfd1f3a3ff8d8f9dfbbd0b2614ad30481a83 to go back to what you had."
+
     public static DigitalInput lightReader = new DigitalInput(0);
 
     // public static BeamBreak beamy = new BeamBreak(0);
@@ -142,6 +144,9 @@ public class HardwareMappings {
                     // processor
                     ele1Ctrlr.setReference(5  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(5  + elevatoroffset, ControlType.kPosition);
+                case 10:
+                    ele1Ctrlr.setReference(160 + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(160 + elevatoroffset, ControlType.kPosition);
                 default:
                     System.out.println("Oh no, make case in HardwareMappings - setElevatorPositionsAuto");
                     break;
