@@ -9,9 +9,22 @@
           "data": {
             "commands": [
               {
-                "type": "path",
+                "type": "sequential",
                 "data": {
-                  "pathName": "StartR_DR1"
+                  "commands": [
+                    {
+                      "type": "wait",
+                      "data": {
+                        "waitTime": 0.9
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "StartR_DR1"
+                      }
+                    }
+                  ]
                 }
               },
               {
@@ -21,13 +34,7 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "jointIntakePos"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "jointL4Pos"
+                        "name": "jointDown"
                       }
                     },
                     {
@@ -43,21 +50,21 @@
           }
         },
         {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.4
+          }
+        },
+        {
           "type": "named",
           "data": {
             "name": "inNOut"
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 1.0
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "stopInNOut"
+            "name": "jointIntakePos"
           }
         },
         {
@@ -83,13 +90,7 @@
                     {
                       "type": "named",
                       "data": {
-                        "name": "jointDown"
-                      }
-                    },
-                    {
-                      "type": "named",
-                      "data": {
-                        "name": "beamIsBroken"
+                        "name": "jointFeederPos"
                       }
                     }
                   ]
@@ -99,21 +100,90 @@
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "DownFeeder_DL2"
+            "waitTime": 2.0
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "DL2_DownFeeder"
+            "name": "inNOut"
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "DownFeeder_DL1"
+            "name": "jointDown"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "DownFeeder_DL1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "slidesUp"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 0.1
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "inNOut"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "jointIntakePos"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "DL1_DownFeeder"
+                }
+              },
+              {
+                "type": "sequential",
+                "data": {
+                  "commands": [
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "slidesDown"
+                      }
+                    },
+                    {
+                      "type": "named",
+                      "data": {
+                        "name": "jointFeederPos"
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
           }
         }
       ]

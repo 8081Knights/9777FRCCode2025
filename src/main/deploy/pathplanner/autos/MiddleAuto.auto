@@ -15,13 +15,13 @@
                     {
                       "type": "wait",
                       "data": {
-                        "waitTime": 0.9
+                        "waitTime": 1.2
                       }
                     },
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "StartL_UR2"
+                        "pathName": "StartM_MR2"
                       }
                     }
                   ]
@@ -50,33 +50,21 @@
           }
         },
         {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.4
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "inNOut"
           }
         },
         {
-          "type": "named",
+          "type": "wait",
           "data": {
-            "name": "jointIntakePos"
+            "waitTime": 0.5
           }
         },
         {
           "type": "parallel",
           "data": {
             "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "UR2_UpFeed"
-                }
-              },
               {
                 "type": "sequential",
                 "data": {
@@ -95,89 +83,21 @@
                     }
                   ]
                 }
-              }
-            ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 2.0
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "inNOut"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "jointDown"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "UpFeed_UL1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "slidesUp"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 0.1
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "inNOut"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "jointIntakePos"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "UL1_UpFeed"
-                }
               },
               {
                 "type": "sequential",
                 "data": {
                   "commands": [
                     {
-                      "type": "named",
+                      "type": "path",
                       "data": {
-                        "name": "slidesDown"
+                        "pathName": "UM2_UM1.5"
                       }
                     },
                     {
-                      "type": "named",
+                      "type": "wait",
                       "data": {
-                        "name": "jointFeederPos"
+                        "waitTime": 0.2
                       }
                     }
                   ]

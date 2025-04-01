@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 7.551,
-        "y": 0.627
+        "x": 5.5291454081632665,
+        "y": 2.6930803571428568
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.898733255536258,
-        "y": 1.2670422003907948
+        "x": 5.402295918367347,
+        "y": 2.916932397959183
       },
       "isLocked": false,
-      "linkedName": "StartR"
+      "linkedName": "DR0.9"
     },
     {
       "anchor": {
@@ -20,8 +20,8 @@
         "y": 3.5138711734693873
       },
       "prevControl": {
-        "x": 5.760459183673469,
-        "y": 2.909470663265306
+        "x": 5.333380350193018,
+        "y": 3.2797888790771266
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,7 +48,7 @@
   "folder": "RightPaths",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 119.99999999999999
   },
   "useDefaultConstraints": true
 }
