@@ -25,8 +25,7 @@ public class JointIntakePos extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println("execute is running and should terminate soon.");
-    super.cancel();
+    //System.out.println(HardwareMappings.QuickMethods.setJointPositionsAuto(1));
   }
 
   // Called once the command ends or is interrupted.
@@ -37,6 +36,11 @@ public class JointIntakePos extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    boolean isFinished = false;
+    if(HardwareMappings.QuickMethods.setJointPositionsAuto(1) <= 0.2 && HardwareMappings.QuickMethods.setJointPositionsAuto(1) >= -0.2){
+        isFinished = true;
+    }
+    return isFinished;
+    
   }
 }

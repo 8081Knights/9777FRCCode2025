@@ -3,9 +3,9 @@ package frc.robot.Commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.HardwareMappings;
 
-public class InNOutStoppable extends Command {
+public class InNOutWithBeam extends Command {
 
-    public InNOutStoppable() {}
+    public InNOutWithBeam() {}
 
     // Called when the command is initially scheduled.
     @Override

@@ -35,6 +35,10 @@ public class JointDown extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    boolean isFinished = false;
+    if(HardwareMappings.QuickMethods.setJointPositionsAuto(2) <= 0.2 && HardwareMappings.QuickMethods.setJointPositionsAuto(2) >= -0.2){
+        isFinished = true;
+    }
+    return isFinished;
   }
 }

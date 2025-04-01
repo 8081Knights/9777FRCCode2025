@@ -18,13 +18,13 @@ public class SlidesDown extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    HardwareMappings.QuickMethods.setElevatorPositionsAuto(0);
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    System.out.println(HardwareMappings.QuickMethods.setElevatorPositionsAuto(0));
+  }
 
   // Called once the command ends or is interrupted.
  
@@ -34,6 +34,6 @@ public class SlidesDown extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return (HardwareMappings.QuickMethods.setElevatorPositionsAuto(0) <= 1 && HardwareMappings.QuickMethods.setElevatorPositionsAuto(0) >= -1); 
   }
 }
