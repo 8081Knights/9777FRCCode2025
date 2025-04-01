@@ -12,6 +12,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+//good practice that i just thought of, make sure you upload your code to github after every day at a comp.
+//you cant during the comp because they dont let you have hotspots
+//helps to know what you did each day and make it not as bad if you 
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
@@ -21,6 +24,8 @@ public class Robot extends TimedRobot {
   public XboxController controller2 = new XboxController(1); 
 
   boolean emergencyElevator = false;
+
+  boolean ignoreSlowMode = false;
 
   
 
@@ -70,8 +75,10 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     if (controller2.getAButton()) {
+      //posnext to 0, so slides can go up, score 1 & 2
       HardwareMappings.QuickMethods.setJointPositionsAuto(1);
     } else if (controller2.getBButton()) {
+      //
       HardwareMappings.QuickMethods.setJointPositionsAuto(2);
     } else if (controller2.getXButton()) {
       HardwareMappings.QuickMethods.setJointPositionsAuto(0);
@@ -124,19 +131,19 @@ public class Robot extends TimedRobot {
     } else if (controller2.getPOV() == 90) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(2);
       HardwareMappings.speedFactor = .15;
-    } else if (controller2.getPOV() == 135) {
+    } else if (controller2.getPOV() == 180) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(3);
       HardwareMappings.speedFactor = .15;
-    } else if (controller2.getPOV() == 180) {
+    } else if (controller2.getPOV() == 270) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(5);
       HardwareMappings.speedFactor = .15;
-    } else if (controller2.getPOV() == 270) {
+    } else if (controller1.getPOV() == 90) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(6);
       HardwareMappings.speedFactor = .15;
-    } else if (controller2.getPOV() == 225) {
+    } else if (controller1.getPOV() == 0) {
       HardwareMappings.QuickMethods.setElevatorPositionsAuto(7);
       HardwareMappings.speedFactor = .15;
-    } else if (controller2.getPOV() == 315) {
+    } else if (controller1.getPOV() == 180) {
     HardwareMappings.QuickMethods.setElevatorPositionsAuto(8);
     HardwareMappings.speedFactor = .15;
     //the angle being 2 never happens, dont need to use that position
@@ -167,7 +174,7 @@ SmartDashboard.updateValues();
     
 
     // Elevator basic control
-    /*
+    
     if (controller1.getRightTriggerAxis() > .001) {
       HardwareMappings.QuickMethods.setElevatorPower(controller1.getRightTriggerAxis()*.2);
     } else if (controller1.getLeftTriggerAxis() > .001) { 
@@ -176,7 +183,7 @@ SmartDashboard.updateValues();
       HardwareMappings.QuickMethods.setElevatorPower(0);
     }
 
-*/
+
     // if (controller2.getAButton()) {
     //   HardwareMappings.intakeOuttake.set(.1);
     // } else if (controller2.getBButton()) { 

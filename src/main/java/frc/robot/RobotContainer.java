@@ -10,6 +10,7 @@ import frc.robot.Commands.*;
 import static edu.wpi.first.units.Units.*;
 
 import com.ctre.phoenix6.swerve.SwerveModule.DriveRequestType;
+import com.fasterxml.jackson.databind.util.Named;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.ctre.phoenix6.swerve.SwerveRequest;
@@ -52,11 +53,12 @@ public class RobotContainer {
         //commands using new classes
         NamedCommands.registerCommand("jointIntakePos", new JointIntakePos());
         NamedCommands.registerCommand("jointDown", new JointDown());
-        NamedCommands.registerCommand("jointL4Pos", new JointL4Pos());
+        NamedCommands.registerCommand("jointL4Pos", new JointFeederPos());
         NamedCommands.registerCommand("slidesDown", new SlidesDown());
         NamedCommands.registerCommand("slidesUp", new SlidesUp());
         NamedCommands.registerCommand("inNOut", new InNOut());
         NamedCommands.registerCommand("stopInNOut", new StopInNOut());
+        NamedCommands.registerCommand("jointFeederPos", new JointFeederPos());
         // NamedCommands.registerCommand("waitTillBeamIsBroken", new WaitTillBeamIsBroken(HardwareMappings.beamy));
     }
 
@@ -71,7 +73,6 @@ public class RobotContainer {
         
         configureBindings();
         // SmartDashboard.putData("Auto Mode", autoChooser);
-        
     }
 
      public Command getAutoCommand() {

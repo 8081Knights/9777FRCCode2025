@@ -41,7 +41,7 @@ public class HardwareMappings {
 
     public static SparkFlex joint = new SparkFlex(31, MotorType.kBrushless);
     public static SparkFlex intakeOuttake = new SparkFlex(33, MotorType.kBrushless);
-    public static RelativeEncoder joinRelativeEncoder = Ele1.getEncoder();
+    public static RelativeEncoder joinRelativeEncoder = joint.getEncoder();
     public static RelativeEncoder intakEncoder = Ele2.getEncoder();
     public static SparkClosedLoopController jointPIDController = joint.getClosedLoopController();
     public static SparkFlexConfig jointConfig = new SparkFlexConfig();
@@ -59,10 +59,11 @@ public class HardwareMappings {
     public static boolean safeUp;
     public static boolean safeDown;
     public static double speedFactor = 1;
+    public static double realSpeedFactor = 1;
     
 
 
-
+    double encoderPOSJoint = joinRelativeEncoder.getPosition();
 
     public static void init() {
         jointConfig.closedLoop.p(.11d).d(.01d).outputRange(-.2, .4);
@@ -96,93 +97,109 @@ public class HardwareMappings {
          * Set elevator positions
          * @param caseNum sets the case of the elevator postion: floor is zero
          */
-        public static void setElevatorPositionsAuto(int caseNum) {
+        public static double setElevatorPositionsAuto(int caseNum) {
             if(!safeUp && caseNum > 0) {
-                return;
+                return -0;
             }
             if (!safeDown && caseNum < 3) {
-                return;
+                //when this method was void, it just did return;
+                return -0;
             }
             switch (caseNum) {
                 case 0:
                     // zero-pos
                     ele1Ctrlr.setReference(0   + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(0   + elevatoroffset, ControlType.kPosition);
-                    break;
+                    return ele1Enc.getPosition();
                 case 1:
                     //level-1 / trough
                     ele1Ctrlr.setReference(15  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(15  + elevatoroffset, ControlType.kPosition);
-                    break;
+                    return ele1Enc.getPosition();
                 case 2:
                     //level-2
                     ele1Ctrlr.setReference(35  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(35  + elevatoroffset, ControlType.kPosition);
-                    break;
+                    return ele1Enc.getPosition();
                 case 3:
                     //level-3
-                    ele1Ctrlr.setReference(72  + elevatoroffset, ControlType.kPosition);
-                    ele2Ctrlr.setReference(72  + elevatoroffset, ControlType.kPosition);
-                    break;
+                    ele1Ctrlr.setReference(75  + elevatoroffset, ControlType.kPosition);
+                    ele2Ctrlr.setReference(75  + elevatoroffset, ControlType.kPosition);
+                    return ele1Enc.getPosition();
                 case 5: 
                     //level-4
                     ele1Ctrlr.setReference(140 + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(140 + elevatoroffset, ControlType.kPosition);
-                    break;
+                    return ele1Enc.getPosition();
                 case 6:
                     // begin algea code
                     //low algea
                     ele1Ctrlr.setReference(57  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(57  + elevatoroffset, ControlType.kPosition);
-                    break;
+                    return ele1Enc.getPosition();
                 case 7:
                     //high algea
                     ele1Ctrlr.setReference(93  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(93  + elevatoroffset, ControlType.kPosition);
-                    break;
+                    return ele1Enc.getPosition();
                 case 8:
                     // processor
                     ele1Ctrlr.setReference(5  + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(5  + elevatoroffset, ControlType.kPosition);
+                    return ele1Enc.getPosition();
                 case 10:
                     ele1Ctrlr.setReference(160 + elevatoroffset, ControlType.kPosition);
                     ele2Ctrlr.setReference(160 + elevatoroffset, ControlType.kPosition);
+                    return ele1Enc.getPosition();
                 default:
                     System.out.println("Oh no, make case in HardwareMappings - setElevatorPositionsAuto");
-                    break;
+                    return ele1Enc.getPosition();
             }
-            currentElevatorCase = caseNum; 
+          //  currentElevatorCase = caseNum; 
 
         }
 
-        public static void setJointPositionsAuto(int caseNum) {
+        public static double setJointPositionsAuto(int caseNum) {
+            double targetPos;
+            double currentEncoderPos = joinRelativeEncoder.getPosition();
             switch (caseNum) {
+                
                 case 0:
-                    HardwareMappings.jointPIDController.setReference(-.3, ControlType.kPosition);
+                    targetPos = -0.3;
+                    HardwareMappings.jointPIDController.setReference(targetPos, ControlType.kPosition);
                     safeDown = true;
                     safeUp = false;
-                    break;
+                    double currentEncoderPos1 = joinRelativeEncoder.getPosition();
+                    double difference2 = targetPos - currentEncoderPos1;
+                    return difference2;
                 case 1:
-                    HardwareMappings.jointPIDController.setReference(-1.05, ControlType.kPosition);
+                targetPos = -1.05;
+                    HardwareMappings.jointPIDController.setReference(targetPos, ControlType.kPosition);
                     safeDown = true;
                     safeUp = true;
-                    break;
+                    double currentEncoderPos2 = joinRelativeEncoder.getPosition();
+                    double difference1 = targetPos - currentEncoderPos2;
+                    return difference1;
                 case 2:
                 //for l4
-                    HardwareMappings.jointPIDController.setReference(-1.4, ControlType.kPosition);
+                targetPos = -1.4;
+                    HardwareMappings.jointPIDController.setReference(targetPos, ControlType.kPosition);
                     safeDown = true;
                     safeUp = true;
-                    break;
+                    double difference3 = targetPos - currentEncoderPos;
+                    return difference3;
                 case 3:
-                    HardwareMappings.jointPIDController.setReference(-4.5, ControlType.kPosition);
+                targetPos = -4.5;
+                    HardwareMappings.jointPIDController.setReference(targetPos, ControlType.kPosition);
                     safeDown = false;
                     safeUp = true;
-                    break;
+                    double difference4 = targetPos - currentEncoderPos;
+                    return difference4;
                 default:
                     System.out.println("Oh no, make case in HardwareMappings");
-                    break;
-
+                    return 10;
             }
+            
         }
 
         /**
